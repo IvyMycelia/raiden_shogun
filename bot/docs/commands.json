@@ -1,0 +1,374 @@
+{
+  "commands": [
+    {
+      "name": "raid",
+      "aliases": ["raid", "raids", "target", "targets"],
+      "description": "Find profitable raid targets within your war range",
+      "usage": "`/raid [score]` or `!raid [score]`",
+      "category": "nation",
+      "keywords": ["raid", "target", "loot", "war", "attack", "score", "range"],
+      "details": "Searches for nations within your war range that are profitable to raid. Uses cached data and real-time API calls to find the best targets based on loot potential, alliance status, and other factors.",
+      "examples": [
+        "`/raid` - Find targets for your registered nation",
+        "`/raid 1500` - Find targets for a nation with 1500 score",
+        "`!raid 2000` - Find targets using prefix command"
+      ]
+    },
+    {
+      "name": "purge",
+      "aliases": ["purge", "purges", "purple", "color"],
+      "description": "Find purple nations to purge for color bloc bonus",
+      "usage": "`/purge [max_score]` or `!purge [max_score]`",
+      "category": "nation",
+      "keywords": ["purge", "purple", "color", "bloc", "bonus", "alliance", "defeat"],
+      "details": "Finds purple nations (your color bloc) that can be defeated to boost your alliance's color bonus. Targets nations with less than 15 cities, not in your alliance or top 70 alliances.",
+      "examples": [
+        "`/purge` - Find purple nations with score ≤ 2000",
+        "`/purge 1500` - Find purple nations with score ≤ 1500",
+        "`!purge 3000` - Find higher score purple nations"
+      ]
+    },
+    {
+      "name": "intel",
+      "aliases": ["intel", "intelligence", "spy", "spies", "report"],
+      "description": "Gather intelligence on a nation or parse intel reports",
+      "usage": "`/intel <nation>` or `!intel <nation>`",
+      "category": "nation",
+      "keywords": ["intel", "intelligence", "spy", "spies", "report", "resources", "money", "market"],
+      "details": "Gathers intelligence on a nation showing their resources, money, and market values. Can also parse intel report text to extract and display the information with current market prices.",
+      "examples": [
+        "`/intel 590508` - Get intel on nation ID 590508",
+        "`/intel` \"You successfully gathered intelligence about Rishi...\" - Parse intel report text",
+        "`!intel Rishi` - Get intel on nation named Rishi"
+      ]
+    },
+    {
+      "name": "wars",
+      "aliases": ["wars", "war", "conflicts", "battles"],
+      "description": "Show all wars a nation is currently in",
+      "usage": "`/wars [nation_id]` or `!wars [nation_id]`",
+      "category": "nation",
+      "keywords": ["wars", "war", "conflicts", "battles", "resistance", "fortify", "maps"],
+      "details": "Displays all active wars for a nation in a neat table format. Shows resistance, fortify status, control, and turns left for each war.",
+      "examples": [
+        "`/wars` - Show wars for your registered nation",
+        "`/wars 590508` - Show wars for nation ID 590508",
+        "`!wars` - Show wars using prefix command"
+      ]
+    },
+    {
+      "name": "who",
+      "aliases": ["who", "info", "nation", "profile"],
+      "description": "Get detailed information about a nation",
+      "usage": "`/who [nation_id]` or `!who [nation_id]`",
+      "category": "nation",
+      "keywords": ["who", "info", "nation", "profile", "details", "information"],
+      "details": "Shows comprehensive information about a nation including basic stats, military, economy, and Discord information if available.",
+      "examples": [
+        "`/who` - Show info for your registered nation",
+        "`/who 590508` - Show info for nation ID 590508",
+        "`!who` - Show info using prefix command"
+      ]
+    },
+    {
+      "name": "spies",
+      "aliases": ["spies", "spy", "audit", "compliance"],
+      "description": "Audit a nation's spy compliance",
+      "usage": "`/spies [nation_id]` or `!spies [nation_id]`",
+      "category": "nation",
+      "keywords": ["spies", "spy", "audit", "compliance", "cia", "intelligence", "required"],
+      "details": "Checks if a nation has the required number of spies based on their CIA project status. Compares current spies with yesterday's count to detect spy purchases.",
+      "examples": [
+        "`/spies` - Audit your registered nation",
+        "`/spies 590508` - Audit nation ID 590508",
+        "`!spies` - Audit using prefix command"
+      ]
+    },
+    {
+      "name": "networth",
+      "aliases": ["networth", "nw", "chest", "resources"],
+      "description": "Show a nation's resource chest (networth)",
+      "usage": "`/networth [nation_id]` or `!nw [nation_id]`",
+      "category": "nation",
+      "keywords": ["networth", "nw", "chest", "resources", "money", "inventory"],
+      "details": "Displays a nation's current resource amounts including money, raw materials, and manufactured goods. Shows total value and individual resource counts.",
+      "examples": [
+        "`/networth` - Show resources for your registered nation",
+        "`/networth 590508` - Show resources for nation ID 590508",
+        "`!nw` - Show resources using prefix command"
+      ]
+    },
+    {
+      "name": "warchest",
+      "aliases": ["warchest", "wc", "upkeep", "military"],
+      "description": "Calculate a nation's warchest requirements (5 days of upkeep)",
+      "usage": "`/warchest [nation_id]` or `!wc [nation_id]`",
+      "category": "nation",
+      "keywords": ["warchest", "wc", "upkeep", "military", "cost", "maintenance"],
+      "details": "Calculates how much money and resources a nation needs to maintain their military for 5 days. Useful for planning war preparations and resource management.",
+      "examples": [
+        "`/warchest` - Calculate for your registered nation",
+        "`/warchest 590508` - Calculate for nation ID 590508",
+        "`!wc` - Calculate using prefix command"
+      ]
+    },
+    {
+      "name": "military",
+      "aliases": ["military", "mil", "army", "forces"],
+      "description": "Check a nation's military capacity and usage",
+      "usage": "`/military [nation_id]` or `!military [nation_id]`",
+      "category": "nation",
+      "keywords": ["military", "mil", "army", "forces", "soldiers", "tanks", "aircraft", "ships"],
+      "details": "Shows detailed military information including unit counts, military capacity usage, and readiness status. Helps assess military strength and planning.",
+      "examples": [
+        "`/military` - Check your registered nation's military",
+        "`/military 590508` - Check nation ID 590508's military",
+        "`!military` - Check using prefix command"
+      ]
+    },
+    {
+      "name": "mmr",
+      "aliases": ["mmr", "rating", "military_rating"],
+      "description": "Check a nation's MMR (Military Management Rating) status",
+      "usage": "`/mmr [nation_id]` or `!mmr [nation_id]`",
+      "category": "nation",
+      "keywords": ["mmr", "rating", "military_rating", "management", "efficiency"],
+      "details": "Displays a nation's Military Management Rating which indicates how efficiently they manage their military forces. Higher ratings mean better military management.",
+      "examples": [
+        "`/mmr` - Check your registered nation's MMR",
+        "`/mmr 590508` - Check nation ID 590508's MMR",
+        "`!mmr` - Check using prefix command"
+      ]
+    },
+    {
+      "name": "chest",
+      "aliases": ["chest", "resources", "inventory"],
+      "description": "Show the current amount of resources on a nation",
+      "usage": "`/chest [nation_id]`",
+      "category": "nation",
+      "keywords": ["chest", "resources", "inventory", "stockpile", "storage"],
+      "details": "Displays a nation's current resource stockpile including all raw materials and manufactured goods. Shows both individual amounts and total value.",
+      "examples": [
+        "`/chest` - Show resources for your registered nation",
+        "`/chest 590508` - Show resources for nation ID 590508"
+      ]
+    },
+    {
+      "name": "w",
+      "aliases": ["w", "search", "find"],
+      "description": "Search for registered nations by name or Discord username",
+      "usage": "`!w <search_term>`",
+      "category": "nation",
+      "keywords": ["w", "search", "find", "lookup", "nation", "discord"],
+      "details": "Searches through registered nations to find matches by nation name or Discord username. Useful for finding specific players or nations.",
+      "examples": [
+        "`!w Rishi` - Search for nations with 'Rishi' in the name",
+        "`!w Ivy` - Search for Discord username 'Ivy'"
+      ]
+    },
+    {
+      "name": "register",
+      "aliases": ["register", "reg", "link", "connect"],
+      "description": "Register your Discord account with a nation",
+      "usage": "`/register <nation_id>`",
+      "category": "user",
+      "keywords": ["register", "reg", "link", "connect", "nation", "account", "discord"],
+      "details": "Links your Discord account to a Politics and War nation. This allows you to use commands without specifying a nation ID each time.",
+      "examples": [
+        "`/register 590508` - Link your Discord to nation 590508",
+        "`/register 123456` - Link to a different nation"
+      ]
+    },
+    {
+      "name": "rpt",
+      "aliases": ["rpt", "report", "message", "send"],
+      "description": "Send a message as the bot (admin only)",
+      "usage": "`/rpt <message> [message_id]`",
+      "category": "admin",
+      "hidden": true,
+      "keywords": ["rpt", "report", "message", "send", "admin", "bot", "reply"],
+      "details": "Allows admins to send messages as the bot. Can optionally reply to a specific message by providing the message ID.",
+      "examples": [
+        "`/rpt Hello everyone!` - Send a simple message",
+        "`/rpt This is a reply 123456789012345678` - Reply to a message"
+      ]
+    },
+    {
+      "name": "update_raid_cache",
+      "aliases": ["update_raid_cache", "update_cache", "refresh"],
+      "description": "Update raid cache with latest data (admin only)",
+      "usage": "`/update_raid_cache` or `!update_raid_cache`",
+      "category": "admin",
+      "hidden": true,
+      "keywords": ["update_raid_cache", "update_cache", "refresh", "admin", "data"],
+      "details": "Forces an immediate update of the raid cache with the latest data from the Politics and War API. Useful for ensuring data is current.",
+      "examples": [
+        "`/update_raid_cache` - Update cache using slash command",
+        "`!update_raid_cache` - Update cache using prefix command"
+      ]
+    },
+    {
+      "name": "defcon",
+      "aliases": ["defcon", "emergency", "alert"],
+      "description": "Set the bot to DEFCON mode (admin only)",
+      "usage": "`!defcon [level]`",
+      "category": "admin",
+      "hidden": true,
+      "keywords": ["defcon", "emergency", "alert", "admin", "mode"],
+      "details": "Sets the bot to DEFCON mode for emergency situations. Only available to administrators and requires specific permissions.",
+      "examples": [
+        "`!defcon 1` - Set to DEFCON 1 (highest alert)",
+        "`!defcon 5` - Set to DEFCON 5 (normal operations)"
+      ]
+    },
+    {
+      "name": "audit",
+      "aliases": ["audit", "check", "verify", "compliance"],
+      "description": "Audit alliance members for various compliance issues (Must be Officer)",
+      "usage": "`/audit [alliance_id]` or `!audit [alliance_id]`",
+      "category": "alliance",
+      "keywords": ["audit", "check", "verify", "compliance", "alliance", "members", "spies"],
+      "details": "Performs comprehensive audits on alliance members including spy compliance, military readiness, and other important metrics.",
+      "examples": [
+        "`/audit` - Audit your alliance",
+        "`/audit 13033` - Audit alliance ID 13033",
+        "`!audit` - Audit using prefix command"
+      ]
+    },
+    {
+      "name": "bank",
+      "aliases": ["bank", "alliance_bank", "treasury"],
+      "description": "Check alliance bank balance",
+      "usage": "`/bank`",
+      "category": "alliance",
+      "keywords": ["bank", "alliance_bank", "treasury", "money", "resources"],
+      "details": "Displays the current alliance bank balance including money and resources. Shows total value and individual resource amounts.",
+      "examples": [
+        "`/bank` - Check alliance bank balance"
+      ]
+    },
+    {
+      "name": "war",
+      "aliases": ["war", "wars", "conflicts"],
+      "description": "Show active wars for a nation",
+      "usage": "`/war <nation_id>`",
+      "category": "war",
+      "keywords": ["war", "wars", "conflicts", "battles", "active"],
+      "details": "Shows all active wars for a specific nation including offensive and defensive wars. Displays war details and status.",
+      "examples": [
+        "`/war 590508` - Show wars for nation ID 590508"
+      ]
+    },
+    {
+      "name": "warstatus",
+      "aliases": ["warstatus", "war_status", "status"],
+      "description": "Check war status and detection",
+      "usage": "`!warstatus`",
+      "category": "war",
+      "keywords": ["warstatus", "war_status", "status", "detection", "monitoring"],
+      "details": "Checks the current war status and detection systems. Useful for monitoring war-related activities and system status.",
+      "examples": [
+        "`!warstatus` - Check current war status"
+      ]
+    },
+    {
+      "name": "clearwars",
+      "aliases": ["clearwars", "clear_wars", "reset"],
+      "description": "Clear war data and reset war tracking",
+      "usage": "`!clearwars`",
+      "category": "war",
+      "keywords": ["clearwars", "clear_wars", "reset", "data", "tracking"],
+      "details": "Clears stored war data and resets war tracking systems. Useful for maintenance and data management.",
+      "examples": [
+        "`!clearwars` - Clear all war data"
+      ]
+    },
+    {
+      "name": "ping",
+      "aliases": ["ping", "latency", "pong"],
+      "description": "Check the bot's latency",
+      "usage": "`/ping`",
+      "category": "utility",
+      "keywords": ["ping", "latency", "pong", "response", "time"],
+      "details": "Checks the bot's current latency and response time. Useful for troubleshooting connection issues.",
+      "examples": [
+        "`/ping` - Check bot latency"
+      ]
+    },
+    {
+      "name": "help",
+      "aliases": ["help", "commands", "info"],
+      "description": "Get help with bot commands",
+      "usage": "`/help [query]` or `!help [query]`",
+      "category": "utility",
+      "keywords": ["help", "commands", "info", "assistance", "guide"],
+      "details": "Provides help and information about bot commands. Can search for specific commands or show general help.",
+      "examples": [
+        "`/help` - Show general help",
+        "`/help raid` - Get help with raid command",
+        "`!help spy` - Search for spy-related commands"
+      ]
+    },
+    {
+      "name": "suggest",
+      "aliases": ["suggest", "suggestion", "feedback"],
+      "description": "Suggest something to the bot",
+      "usage": "`/suggest <suggestion>`",
+      "category": "utility",
+      "keywords": ["suggest", "suggestion", "feedback", "idea", "improvement"],
+      "details": "Submit suggestions for bot improvements or new features. Your feedback helps make the bot better.",
+      "examples": [
+        "`/suggest Add a new command for alliance management` - Submit a suggestion"
+      ]
+    },
+    {
+      "name": "report-a-bug",
+      "aliases": ["report-a-bug", "bug", "report", "error"],
+      "description": "Report a bug to the bot",
+      "usage": "`/report-a-bug <description>`",
+      "category": "utility",
+      "keywords": ["report-a-bug", "bug", "report", "error", "issue", "problem"],
+      "details": "Report bugs or issues you encounter with the bot. Include as much detail as possible to help fix the problem.",
+      "examples": [
+        "`/report-a-bug The raid command is not working properly` - Report a bug"
+      ]
+    }
+  ],
+  "categories": {
+    "nation": {
+      "name": "Nation Commands",
+      "description": "Commands for gathering information about nations and finding targets",
+      "emoji": "🏴"
+    },
+    "alliance": {
+      "name": "Alliance Commands", 
+      "description": "Commands for managing and auditing alliances",
+      "emoji": "🤝"
+    },
+    "user": {
+      "name": "User Commands",
+      "description": "Commands for managing your Discord account and settings",
+      "emoji": "👤"
+    },
+    "admin": {
+      "name": "Admin Commands",
+      "description": "Administrative commands for bot management",
+      "emoji": "⚙️"
+    },
+    "war": {
+      "name": "War Commands",
+      "description": "Commands for war detection, analysis, and management",
+      "emoji": "⚔️"
+    },
+    "utility": {
+      "name": "Utility Commands",
+      "description": "General utility and help commands",
+      "emoji": "🔧"
+    }
+  },
+  "general": {
+    "description": "Raiden Shogun is a comprehensive Politics and War Discord bot that helps with raiding, intelligence gathering, alliance management, and more.",
+    "prefix": "!",
+    "support": "For support, contact <@860564164828725299> or check the documentation."
+  }
+}

@@ -1,0 +1,4018 @@
+{
+  "619": {
+    "id": 619,
+    "name": "Guardian",
+    "rank": 999,
+    "score": 459971.07,
+    "cities": 0,
+    "members": 0
+  },
+  "622": {
+    "id": 622,
+    "name": "United Purple Nations",
+    "rank": 999,
+    "score": 245798.49,
+    "cities": 0,
+    "members": 0
+  },
+  "770": {
+    "id": 770,
+    "name": "770",
+    "rank": 999,
+    "score": 10012.75,
+    "cities": 0,
+    "members": 0
+  },
+  "790": {
+    "id": 790,
+    "name": "Rose",
+    "rank": 999,
+    "score": 1260983.69,
+    "cities": 0,
+    "members": 0
+  },
+  "831": {
+    "id": 831,
+    "name": "The Syndicate",
+    "rank": 999,
+    "score": 941352.89,
+    "cities": 0,
+    "members": 0
+  },
+  "866": {
+    "id": 866,
+    "name": "Guardians of the Galaxy",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "877": {
+    "id": 877,
+    "name": "Black Knights",
+    "rank": 999,
+    "score": 263236.45,
+    "cities": 0,
+    "members": 0
+  },
+  "913": {
+    "id": 913,
+    "name": "Arrgh",
+    "rank": 999,
+    "score": 147642.09,
+    "cities": 0,
+    "members": 0
+  },
+  "1023": {
+    "id": 1023,
+    "name": "The Fighting Pacifists",
+    "rank": 999,
+    "score": 723889.83,
+    "cities": 0,
+    "members": 0
+  },
+  "1210": {
+    "id": 1210,
+    "name": "World Task Force",
+    "rank": 999,
+    "score": 212122.4,
+    "cities": 0,
+    "members": 0
+  },
+  "1246": {
+    "id": 1246,
+    "name": "Farkistan",
+    "rank": 999,
+    "score": 20931.21,
+    "cities": 0,
+    "members": 0
+  },
+  "1584": {
+    "id": 1584,
+    "name": "The Knights Radiant",
+    "rank": 999,
+    "score": 1055606.27,
+    "cities": 0,
+    "members": 0
+  },
+  "1742": {
+    "id": 1742,
+    "name": "The Wei",
+    "rank": 999,
+    "score": 15264.75,
+    "cities": 0,
+    "members": 0
+  },
+  "1896": {
+    "id": 1896,
+    "name": "Pantheon",
+    "rank": 999,
+    "score": 17959.99,
+    "cities": 0,
+    "members": 0
+  },
+  "2082": {
+    "id": 2082,
+    "name": "New Pacific Order",
+    "rank": 999,
+    "score": 4080.0,
+    "cities": 0,
+    "members": 0
+  },
+  "2358": {
+    "id": 2358,
+    "name": "New Polar Order",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "2510": {
+    "id": 2510,
+    "name": "Royal Alba Charter Company",
+    "rank": 999,
+    "score": 62611.56,
+    "cities": 0,
+    "members": 0
+  },
+  "2594": {
+    "id": 2594,
+    "name": "United Socialist Nations",
+    "rank": 999,
+    "score": 126367.18,
+    "cities": 0,
+    "members": 0
+  },
+  "3339": {
+    "id": 3339,
+    "name": "Grumpy Old Bastards",
+    "rank": 999,
+    "score": 488041.99,
+    "cities": 0,
+    "members": 0
+  },
+  "3427": {
+    "id": 3427,
+    "name": "Legion Of Dawn",
+    "rank": 999,
+    "score": 8750.5,
+    "cities": 0,
+    "members": 0
+  },
+  "3683": {
+    "id": 3683,
+    "name": "House Stark",
+    "rank": 999,
+    "score": 223788.11,
+    "cities": 0,
+    "members": 0
+  },
+  "3940": {
+    "id": 3940,
+    "name": "The United Empire of ZahAharon",
+    "rank": 999,
+    "score": 2190.0,
+    "cities": 0,
+    "members": 0
+  },
+  "4124": {
+    "id": 4124,
+    "name": "Knights Templar",
+    "rank": 999,
+    "score": 10111.16,
+    "cities": 0,
+    "members": 0
+  },
+  "4150": {
+    "id": 4150,
+    "name": "Yarr",
+    "rank": 999,
+    "score": 160560.26,
+    "cities": 0,
+    "members": 0
+  },
+  "4221": {
+    "id": 4221,
+    "name": "Spectre",
+    "rank": 999,
+    "score": 544571.52,
+    "cities": 0,
+    "members": 0
+  },
+  "4271": {
+    "id": 4271,
+    "name": "Oblivion",
+    "rank": 999,
+    "score": 110729.05,
+    "cities": 0,
+    "members": 0
+  },
+  "4397": {
+    "id": 4397,
+    "name": "Strickland Propane",
+    "rank": 999,
+    "score": 32016.35,
+    "cities": 0,
+    "members": 0
+  },
+  "4468": {
+    "id": 4468,
+    "name": "Purple Flower Garden",
+    "rank": 999,
+    "score": 9818.0,
+    "cities": 0,
+    "members": 0
+  },
+  "4567": {
+    "id": 4567,
+    "name": "The Golden Horde",
+    "rank": 999,
+    "score": 178528.55,
+    "cities": 0,
+    "members": 0
+  },
+  "4638": {
+    "id": 4638,
+    "name": "Sacrum Romanum Imperium",
+    "rank": 999,
+    "score": 53435.61,
+    "cities": 0,
+    "members": 0
+  },
+  "4648": {
+    "id": 4648,
+    "name": "Aurora",
+    "rank": 999,
+    "score": 12055.0,
+    "cities": 0,
+    "members": 0
+  },
+  "4729": {
+    "id": 4729,
+    "name": "Church Of Atom",
+    "rank": 999,
+    "score": 6837.95,
+    "cities": 0,
+    "members": 0
+  },
+  "4829": {
+    "id": 4829,
+    "name": "The Enterprise",
+    "rank": 999,
+    "score": 232627.35,
+    "cities": 0,
+    "members": 0
+  },
+  "4937": {
+    "id": 4937,
+    "name": "Camelot",
+    "rank": 999,
+    "score": 342034.11,
+    "cities": 0,
+    "members": 0
+  },
+  "5012": {
+    "id": 5012,
+    "name": "Respublica Romana",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "5039": {
+    "id": 5039,
+    "name": "Goon Squad",
+    "rank": 999,
+    "score": 11950.46,
+    "cities": 0,
+    "members": 0
+  },
+  "5049": {
+    "id": 5049,
+    "name": "Carthago",
+    "rank": 999,
+    "score": 4072.76,
+    "cities": 0,
+    "members": 0
+  },
+  "5476": {
+    "id": 5476,
+    "name": "Weebunism",
+    "rank": 999,
+    "score": 399385.86,
+    "cities": 0,
+    "members": 0
+  },
+  "5658": {
+    "id": 5658,
+    "name": "Unforgiven Legion",
+    "rank": 999,
+    "score": 14020.35,
+    "cities": 0,
+    "members": 0
+  },
+  "5875": {
+    "id": 5875,
+    "name": "The Immortals",
+    "rank": 999,
+    "score": 722746.14,
+    "cities": 0,
+    "members": 0
+  },
+  "6088": {
+    "id": 6088,
+    "name": "Terminus Est",
+    "rank": 999,
+    "score": 11537.5,
+    "cities": 0,
+    "members": 0
+  },
+  "6126": {
+    "id": 6126,
+    "name": "The Lost Empire",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "6877": {
+    "id": 6877,
+    "name": "Advanced Syndicalist Mechanics",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "7000": {
+    "id": 7000,
+    "name": "Banana Stand",
+    "rank": 999,
+    "score": 31602.5,
+    "cities": 0,
+    "members": 0
+  },
+  "7094": {
+    "id": 7094,
+    "name": "The Coal Mines",
+    "rank": 999,
+    "score": 7275.48,
+    "cities": 0,
+    "members": 0
+  },
+  "7249": {
+    "id": 7249,
+    "name": "The Firm",
+    "rank": 999,
+    "score": 34644.9,
+    "cities": 0,
+    "members": 0
+  },
+  "7346": {
+    "id": 7346,
+    "name": "Chocolate Castle",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "7433": {
+    "id": 7433,
+    "name": "Almighty Corporation",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "7450": {
+    "id": 7450,
+    "name": "Eclipse",
+    "rank": 999,
+    "score": 1690366.05,
+    "cities": 0,
+    "members": 0
+  },
+  "7484": {
+    "id": 7484,
+    "name": "Global Alliance & Treaty Organization",
+    "rank": 999,
+    "score": 397989.98,
+    "cities": 0,
+    "members": 0
+  },
+  "7580": {
+    "id": 7580,
+    "name": "The Legion",
+    "rank": 999,
+    "score": 337122.03,
+    "cities": 0,
+    "members": 0
+  },
+  "7674": {
+    "id": 7674,
+    "name": "The Mortals",
+    "rank": 999,
+    "score": 41746.67,
+    "cities": 0,
+    "members": 0
+  },
+  "7750": {
+    "id": 7750,
+    "name": "United Ummah",
+    "rank": 999,
+    "score": 175368.83,
+    "cities": 0,
+    "members": 0
+  },
+  "7815": {
+    "id": 7815,
+    "name": "99942 Apophis",
+    "rank": 999,
+    "score": 36322.64,
+    "cities": 0,
+    "members": 0
+  },
+  "8236": {
+    "id": 8236,
+    "name": "Name Withheld",
+    "rank": 999,
+    "score": 307734.91,
+    "cities": 0,
+    "members": 0
+  },
+  "8257": {
+    "id": 8257,
+    "name": "rose but better",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "8343": {
+    "id": 8343,
+    "name": "The Armed Peacekeepers",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "8442": {
+    "id": 8442,
+    "name": "Antifa Super Soldiers",
+    "rank": 999,
+    "score": 12.25,
+    "cities": 0,
+    "members": 0
+  },
+  "8459": {
+    "id": 8459,
+    "name": "Genesis",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "8577": {
+    "id": 8577,
+    "name": "Heung Shing Corporation",
+    "rank": 999,
+    "score": 30966.03,
+    "cities": 0,
+    "members": 0
+  },
+  "8651": {
+    "id": 8651,
+    "name": "United Commerce Republic",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "8819": {
+    "id": 8819,
+    "name": "The Hive",
+    "rank": 999,
+    "score": 7859.5,
+    "cities": 0,
+    "members": 0
+  },
+  "8899": {
+    "id": 8899,
+    "name": "Federated States of Orbis",
+    "rank": 999,
+    "score": 214219.48,
+    "cities": 0,
+    "members": 0
+  },
+  "8900": {
+    "id": 8900,
+    "name": "Admin Alliance",
+    "rank": 999,
+    "score": 600.99,
+    "cities": 0,
+    "members": 0
+  },
+  "8926": {
+    "id": 8926,
+    "name": "Gallowglass",
+    "rank": 999,
+    "score": 81734.42,
+    "cities": 0,
+    "members": 0
+  },
+  "9000": {
+    "id": 9000,
+    "name": "The Hand of Fate",
+    "rank": 999,
+    "score": 29568.2,
+    "cities": 0,
+    "members": 0
+  },
+  "9192": {
+    "id": 9192,
+    "name": "United Nations of LATAM",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9432": {
+    "id": 9432,
+    "name": "Orchid",
+    "rank": 999,
+    "score": 12665.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9445": {
+    "id": 9445,
+    "name": "Cybertr0n",
+    "rank": 999,
+    "score": 129420.63,
+    "cities": 0,
+    "members": 0
+  },
+  "9573": {
+    "id": 9573,
+    "name": "Black Skies",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9600": {
+    "id": 9600,
+    "name": "Imperium of Man",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9661": {
+    "id": 9661,
+    "name": "Pika Party",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9712": {
+    "id": 9712,
+    "name": "Zenith",
+    "rank": 999,
+    "score": 3020.54,
+    "cities": 0,
+    "members": 0
+  },
+  "9745": {
+    "id": 9745,
+    "name": "GUND-ARM Inc",
+    "rank": 999,
+    "score": 8851.75,
+    "cities": 0,
+    "members": 0
+  },
+  "9801": {
+    "id": 9801,
+    "name": "The LordStrum Vanity Project",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "9862": {
+    "id": 9862,
+    "name": "The Key",
+    "rank": 999,
+    "score": 2895.71,
+    "cities": 0,
+    "members": 0
+  },
+  "9999": {
+    "id": 9999,
+    "name": "Rainy Days",
+    "rank": 999,
+    "score": 9617.9,
+    "cities": 0,
+    "members": 0
+  },
+  "10000": {
+    "id": 10000,
+    "name": "Shuba10KM",
+    "rank": 999,
+    "score": 23204.85,
+    "cities": 0,
+    "members": 0
+  },
+  "10075": {
+    "id": 10075,
+    "name": "Paddys Pub",
+    "rank": 999,
+    "score": 230063.52,
+    "cities": 0,
+    "members": 0
+  },
+  "10117": {
+    "id": 10117,
+    "name": "Crusaders of the Holy Boogaloo",
+    "rank": 999,
+    "score": 1690.0,
+    "cities": 0,
+    "members": 0
+  },
+  "10177": {
+    "id": 10177,
+    "name": "Man I Love Frogs",
+    "rank": 999,
+    "score": 209888.29,
+    "cities": 0,
+    "members": 0
+  },
+  "10198": {
+    "id": 10198,
+    "name": "Damn I love Frogs",
+    "rank": 999,
+    "score": 14673.75,
+    "cities": 0,
+    "members": 0
+  },
+  "10259": {
+    "id": 10259,
+    "name": "Darkstar",
+    "rank": 999,
+    "score": 232276.03,
+    "cities": 0,
+    "members": 0
+  },
+  "10269": {
+    "id": 10269,
+    "name": "Mayhem",
+    "rank": 999,
+    "score": 145668.95,
+    "cities": 0,
+    "members": 0
+  },
+  "10304": {
+    "id": 10304,
+    "name": "Samurai",
+    "rank": 999,
+    "score": 235485.83,
+    "cities": 0,
+    "members": 0
+  },
+  "10334": {
+    "id": 10334,
+    "name": "Arkham Asylum",
+    "rank": 999,
+    "score": 154632.77,
+    "cities": 0,
+    "members": 0
+  },
+  "10377": {
+    "id": 10377,
+    "name": "-Glasgow-",
+    "rank": 999,
+    "score": 89130.33,
+    "cities": 0,
+    "members": 0
+  },
+  "10382": {
+    "id": 10382,
+    "name": "Fumo",
+    "rank": 999,
+    "score": 15846.05,
+    "cities": 0,
+    "members": 0
+  },
+  "10384": {
+    "id": 10384,
+    "name": "GASH LOYAL",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "10455": {
+    "id": 10455,
+    "name": "Anti-Horridism Obocchama Kun",
+    "rank": 999,
+    "score": 410.0,
+    "cities": 0,
+    "members": 0
+  },
+  "10497": {
+    "id": 10497,
+    "name": "Freehold of the Wolves Offshore",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "10498": {
+    "id": 10498,
+    "name": "The Witcher Order",
+    "rank": 999,
+    "score": 2874.09,
+    "cities": 0,
+    "members": 0
+  },
+  "10523": {
+    "id": 10523,
+    "name": "Valinor",
+    "rank": 999,
+    "score": 30824.08,
+    "cities": 0,
+    "members": 0
+  },
+  "10555": {
+    "id": 10555,
+    "name": "Akatsuki",
+    "rank": 999,
+    "score": 2524.39,
+    "cities": 0,
+    "members": 0
+  },
+  "10613": {
+    "id": 10613,
+    "name": "Union of Socialist Soviet Republicz",
+    "rank": 999,
+    "score": 1648.35,
+    "cities": 0,
+    "members": 0
+  },
+  "10629": {
+    "id": 10629,
+    "name": "Momento Mori",
+    "rank": 999,
+    "score": 12846.74,
+    "cities": 0,
+    "members": 0
+  },
+  "10659": {
+    "id": 10659,
+    "name": "Panem",
+    "rank": 999,
+    "score": 73724.27,
+    "cities": 0,
+    "members": 0
+  },
+  "10664": {
+    "id": 10664,
+    "name": "Cult of Canyon",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "10970": {
+    "id": 10970,
+    "name": "Presidential Republic of Igua-sul",
+    "rank": 999,
+    "score": 1535.14,
+    "cities": 0,
+    "members": 0
+  },
+  "10983": {
+    "id": 10983,
+    "name": "Brothers in Christ",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11009": {
+    "id": 11009,
+    "name": "The Republic of Libertas",
+    "rank": 999,
+    "score": 261567.91,
+    "cities": 0,
+    "members": 0
+  },
+  "11032": {
+    "id": 11032,
+    "name": "SFR Yugoslavia",
+    "rank": 999,
+    "score": 180195.03,
+    "cities": 0,
+    "members": 0
+  },
+  "11046": {
+    "id": 11046,
+    "name": "Magnum Opus",
+    "rank": 999,
+    "score": 22070.53,
+    "cities": 0,
+    "members": 0
+  },
+  "11048": {
+    "id": 11048,
+    "name": "Empire of the Romans",
+    "rank": 999,
+    "score": 293403.94,
+    "cities": 0,
+    "members": 0
+  },
+  "11062": {
+    "id": 11062,
+    "name": "Antarctica Alliance",
+    "rank": 999,
+    "score": 175348.27,
+    "cities": 0,
+    "members": 0
+  },
+  "11189": {
+    "id": 11189,
+    "name": "Weaponized Assault Penguins",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11202": {
+    "id": 11202,
+    "name": "Arrkboom",
+    "rank": 999,
+    "score": 3690.01,
+    "cities": 0,
+    "members": 0
+  },
+  "11279": {
+    "id": 11279,
+    "name": "HOUSE OF LORDS",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11281": {
+    "id": 11281,
+    "name": "Britonnia",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11330": {
+    "id": 11330,
+    "name": "Men In Black",
+    "rank": 999,
+    "score": 5075.71,
+    "cities": 0,
+    "members": 0
+  },
+  "11331": {
+    "id": 11331,
+    "name": "BROTHERHOOD FAMILY",
+    "rank": 999,
+    "score": 2892.14,
+    "cities": 0,
+    "members": 0
+  },
+  "11339": {
+    "id": 11339,
+    "name": "The High Table",
+    "rank": 999,
+    "score": 75696.09,
+    "cities": 0,
+    "members": 0
+  },
+  "11340": {
+    "id": 11340,
+    "name": "Orbis Peace Organization",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11349": {
+    "id": 11349,
+    "name": "Shamballa",
+    "rank": 999,
+    "score": 2225.91,
+    "cities": 0,
+    "members": 0
+  },
+  "11504": {
+    "id": 11504,
+    "name": "H0D0R",
+    "rank": 999,
+    "score": 9243.83,
+    "cities": 0,
+    "members": 0
+  },
+  "11553": {
+    "id": 11553,
+    "name": "Globglogabgalab Inc",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11568": {
+    "id": 11568,
+    "name": "The Paladin",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11622": {
+    "id": 11622,
+    "name": "Communist Republic",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11627": {
+    "id": 11627,
+    "name": "The empires",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11657": {
+    "id": 11657,
+    "name": "Singularity",
+    "rank": 999,
+    "score": 717816.16,
+    "cities": 0,
+    "members": 0
+  },
+  "11660": {
+    "id": 11660,
+    "name": "Pokimans",
+    "rank": 999,
+    "score": 82989.54,
+    "cities": 0,
+    "members": 0
+  },
+  "11668": {
+    "id": 11668,
+    "name": "Alliance Name",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11674": {
+    "id": 11674,
+    "name": "Hovel",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11875": {
+    "id": 11875,
+    "name": "THE FOUR HORSEMEN",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11880": {
+    "id": 11880,
+    "name": "Tomb of the Mandalore",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11881": {
+    "id": 11881,
+    "name": "Cream 2",
+    "rank": 999,
+    "score": 2400.04,
+    "cities": 0,
+    "members": 0
+  },
+  "11915": {
+    "id": 11915,
+    "name": "Cool Cobras",
+    "rank": 999,
+    "score": 1035.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11965": {
+    "id": 11965,
+    "name": "Nemesys",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "11973": {
+    "id": 11973,
+    "name": "Requiem Project",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12097": {
+    "id": 12097,
+    "name": "Dark Brotherhood",
+    "rank": 999,
+    "score": 8488.73,
+    "cities": 0,
+    "members": 0
+  },
+  "12149": {
+    "id": 12149,
+    "name": "The Empire Of Avalon",
+    "rank": 999,
+    "score": 981.46,
+    "cities": 0,
+    "members": 0
+  },
+  "12213": {
+    "id": 12213,
+    "name": "DeVito Union",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12216": {
+    "id": 12216,
+    "name": "Communist Propaganda",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12234": {
+    "id": 12234,
+    "name": "Crimson Corp",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12251": {
+    "id": 12251,
+    "name": "Movimento Referencista",
+    "rank": 999,
+    "score": 704.32,
+    "cities": 0,
+    "members": 0
+  },
+  "12263": {
+    "id": 12263,
+    "name": "Llama Alliance",
+    "rank": 999,
+    "score": 850.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12281": {
+    "id": 12281,
+    "name": "The Sword Coast",
+    "rank": 999,
+    "score": 361842.33,
+    "cities": 0,
+    "members": 0
+  },
+  "12298": {
+    "id": 12298,
+    "name": "Color Trade Union",
+    "rank": 999,
+    "score": 4510.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12314": {
+    "id": 12314,
+    "name": "Genesis of Light",
+    "rank": 999,
+    "score": 1770.74,
+    "cities": 0,
+    "members": 0
+  },
+  "12345": {
+    "id": 12345,
+    "name": "Planet Fitness",
+    "rank": 999,
+    "score": 9543.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12419": {
+    "id": 12419,
+    "name": "Delicious Wine",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12437": {
+    "id": 12437,
+    "name": "The Imperial Republic",
+    "rank": 999,
+    "score": 440.19,
+    "cities": 0,
+    "members": 0
+  },
+  "12453": {
+    "id": 12453,
+    "name": "Gamblers Anonymous",
+    "rank": 999,
+    "score": 4725.35,
+    "cities": 0,
+    "members": 0
+  },
+  "12479": {
+    "id": 12479,
+    "name": "The Exiled",
+    "rank": 999,
+    "score": 702.37,
+    "cities": 0,
+    "members": 0
+  },
+  "12480": {
+    "id": 12480,
+    "name": "Event Horizon",
+    "rank": 999,
+    "score": 995869.71,
+    "cities": 0,
+    "members": 0
+  },
+  "12481": {
+    "id": 12481,
+    "name": "Paragon",
+    "rank": 999,
+    "score": 13838.75,
+    "cities": 0,
+    "members": 0
+  },
+  "12482": {
+    "id": 12482,
+    "name": "Los Homoerectus",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12497": {
+    "id": 12497,
+    "name": "Matshaas Big Girthy Specimens",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12500": {
+    "id": 12500,
+    "name": "Atlas Technologies",
+    "rank": 999,
+    "score": 19549.75,
+    "cities": 0,
+    "members": 0
+  },
+  "12507": {
+    "id": 12507,
+    "name": "Proxy Treaty Organization",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12512": {
+    "id": 12512,
+    "name": "The Foundation",
+    "rank": 999,
+    "score": 9874.07,
+    "cities": 0,
+    "members": 0
+  },
+  "12532": {
+    "id": 12532,
+    "name": "Cherry Blossom",
+    "rank": 999,
+    "score": 750.19,
+    "cities": 0,
+    "members": 0
+  },
+  "12545": {
+    "id": 12545,
+    "name": "The Fremen",
+    "rank": 999,
+    "score": 109359.82,
+    "cities": 0,
+    "members": 0
+  },
+  "12578": {
+    "id": 12578,
+    "name": "aNiMaLz",
+    "rank": 999,
+    "score": 5263.5,
+    "cities": 0,
+    "members": 0
+  },
+  "12591": {
+    "id": 12591,
+    "name": "The Convenience Store",
+    "rank": 999,
+    "score": 2400.59,
+    "cities": 0,
+    "members": 0
+  },
+  "12595": {
+    "id": 12595,
+    "name": "Roman Senate",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12611": {
+    "id": 12611,
+    "name": "defunct",
+    "rank": 999,
+    "score": 428.5,
+    "cities": 0,
+    "members": 0
+  },
+  "12615": {
+    "id": 12615,
+    "name": "The Lost Mines",
+    "rank": 999,
+    "score": 214947.1,
+    "cities": 0,
+    "members": 0
+  },
+  "12621": {
+    "id": 12621,
+    "name": "Indore East India Company",
+    "rank": 999,
+    "score": 958.32,
+    "cities": 0,
+    "members": 0
+  },
+  "12622": {
+    "id": 12622,
+    "name": "Lol idk",
+    "rank": 999,
+    "score": 971.06,
+    "cities": 0,
+    "members": 0
+  },
+  "12666": {
+    "id": 12666,
+    "name": "Wolf Cola",
+    "rank": 999,
+    "score": 7351.02,
+    "cities": 0,
+    "members": 0
+  },
+  "12684": {
+    "id": 12684,
+    "name": "UkkoCouncilOfOrbis",
+    "rank": 999,
+    "score": 450.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12693": {
+    "id": 12693,
+    "name": "Starry",
+    "rank": 999,
+    "score": 602.65,
+    "cities": 0,
+    "members": 0
+  },
+  "12705": {
+    "id": 12705,
+    "name": "Agora",
+    "rank": 999,
+    "score": 11048.42,
+    "cities": 0,
+    "members": 0
+  },
+  "12740": {
+    "id": 12740,
+    "name": "CULTure",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12774": {
+    "id": 12774,
+    "name": "Pacific Pirates",
+    "rank": 999,
+    "score": 12909.67,
+    "cities": 0,
+    "members": 0
+  },
+  "12847": {
+    "id": 12847,
+    "name": "Neo-Comintern",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12872": {
+    "id": 12872,
+    "name": "North Star Federation",
+    "rank": 999,
+    "score": 4292.64,
+    "cities": 0,
+    "members": 0
+  },
+  "12902": {
+    "id": 12902,
+    "name": "Bellanostra",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12919": {
+    "id": 12919,
+    "name": "Liberty Corp",
+    "rank": 999,
+    "score": 46503.08,
+    "cities": 0,
+    "members": 0
+  },
+  "12923": {
+    "id": 12923,
+    "name": "GORGON",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12947": {
+    "id": 12947,
+    "name": "Nazgul",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12948": {
+    "id": 12948,
+    "name": "Ad Astra",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12972": {
+    "id": 12972,
+    "name": "Shadow Valley",
+    "rank": 999,
+    "score": 64288.5,
+    "cities": 0,
+    "members": 0
+  },
+  "12978": {
+    "id": 12978,
+    "name": "Southern Alliance",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "12985": {
+    "id": 12985,
+    "name": "The Imperial Grand House",
+    "rank": 999,
+    "score": 17487.82,
+    "cities": 0,
+    "members": 0
+  },
+  "12994": {
+    "id": 12994,
+    "name": "Cult of Raccoon",
+    "rank": 999,
+    "score": 94884.98,
+    "cities": 0,
+    "members": 0
+  },
+  "13022": {
+    "id": 13022,
+    "name": "Doom Incorporated",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13033": {
+    "id": 13033,
+    "name": "Evera",
+    "rank": 999,
+    "score": 92295.19,
+    "cities": 0,
+    "members": 0
+  },
+  "13041": {
+    "id": 13041,
+    "name": "Organization of United Pact",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13043": {
+    "id": 13043,
+    "name": "Rubikon Alliance Defensive",
+    "rank": 999,
+    "score": 1115.7,
+    "cities": 0,
+    "members": 0
+  },
+  "13048": {
+    "id": 13048,
+    "name": "Prusso Roman Imperial Union",
+    "rank": 999,
+    "score": 64752.4,
+    "cities": 0,
+    "members": 0
+  },
+  "13056": {
+    "id": 13056,
+    "name": "TRIADS",
+    "rank": 999,
+    "score": 413.08,
+    "cities": 0,
+    "members": 0
+  },
+  "13128": {
+    "id": 13128,
+    "name": "United nations of the orbis",
+    "rank": 999,
+    "score": 7313.84,
+    "cities": 0,
+    "members": 0
+  },
+  "13133": {
+    "id": 13133,
+    "name": "Moroccan Alliance",
+    "rank": 999,
+    "score": 650.45,
+    "cities": 0,
+    "members": 0
+  },
+  "13175": {
+    "id": 13175,
+    "name": "Novus Junior",
+    "rank": 999,
+    "score": 1087.61,
+    "cities": 0,
+    "members": 0
+  },
+  "13176": {
+    "id": 13176,
+    "name": "Union of Free Republics",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13214": {
+    "id": 13214,
+    "name": "The Grand Army of The Republic",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13218": {
+    "id": 13218,
+    "name": "Mordor",
+    "rank": 999,
+    "score": 930.8,
+    "cities": 0,
+    "members": 0
+  },
+  "13221": {
+    "id": 13221,
+    "name": "The Wall",
+    "rank": 999,
+    "score": 15646.03,
+    "cities": 0,
+    "members": 0
+  },
+  "13245": {
+    "id": 13245,
+    "name": "City Skylines 2",
+    "rank": 999,
+    "score": 18723.04,
+    "cities": 0,
+    "members": 0
+  },
+  "13250": {
+    "id": 13250,
+    "name": "sillycats",
+    "rank": 999,
+    "score": 44564.29,
+    "cities": 0,
+    "members": 0
+  },
+  "13288": {
+    "id": 13288,
+    "name": "North Atlantic Treaty Organization",
+    "rank": 999,
+    "score": 3893.69,
+    "cities": 0,
+    "members": 0
+  },
+  "13290": {
+    "id": 13290,
+    "name": "Spaghetti",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13294": {
+    "id": 13294,
+    "name": "Port Alba",
+    "rank": 999,
+    "score": 24387.14,
+    "cities": 0,
+    "members": 0
+  },
+  "13295": {
+    "id": 13295,
+    "name": "Myrmidons",
+    "rank": 999,
+    "score": 172060.17,
+    "cities": 0,
+    "members": 0
+  },
+  "13300": {
+    "id": 13300,
+    "name": "Econ Haven",
+    "rank": 999,
+    "score": 1406.77,
+    "cities": 0,
+    "members": 0
+  },
+  "13321": {
+    "id": 13321,
+    "name": "Fascist Armed Forces",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13331": {
+    "id": 13331,
+    "name": "The Red Knights",
+    "rank": 999,
+    "score": 927.37,
+    "cities": 0,
+    "members": 0
+  },
+  "13351": {
+    "id": 13351,
+    "name": "Morningstar",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13356": {
+    "id": 13356,
+    "name": "Uppsala",
+    "rank": 999,
+    "score": 68582.31,
+    "cities": 0,
+    "members": 0
+  },
+  "13359": {
+    "id": 13359,
+    "name": "Anarchist Alliance",
+    "rank": 999,
+    "score": 896.97,
+    "cities": 0,
+    "members": 0
+  },
+  "13371": {
+    "id": 13371,
+    "name": "pink chicken animations",
+    "rank": 999,
+    "score": 1247.67,
+    "cities": 0,
+    "members": 0
+  },
+  "13404": {
+    "id": 13404,
+    "name": "The Republic of free nations",
+    "rank": 999,
+    "score": 1450.04,
+    "cities": 0,
+    "members": 0
+  },
+  "13410": {
+    "id": 13410,
+    "name": "Vought International",
+    "rank": 999,
+    "score": 193207.99,
+    "cities": 0,
+    "members": 0
+  },
+  "13424": {
+    "id": 13424,
+    "name": "Fallen Knights",
+    "rank": 999,
+    "score": 3250.36,
+    "cities": 0,
+    "members": 0
+  },
+  "13426": {
+    "id": 13426,
+    "name": "The British Commonwealth",
+    "rank": 999,
+    "score": 340.29,
+    "cities": 0,
+    "members": 0
+  },
+  "13440": {
+    "id": 13440,
+    "name": "Avalanche",
+    "rank": 999,
+    "score": 20208.77,
+    "cities": 0,
+    "members": 0
+  },
+  "13463": {
+    "id": 13463,
+    "name": "Wakanda Forever",
+    "rank": 999,
+    "score": 3164.44,
+    "cities": 0,
+    "members": 0
+  },
+  "13475": {
+    "id": 13475,
+    "name": "The Northern Alliance",
+    "rank": 999,
+    "score": 3693.48,
+    "cities": 0,
+    "members": 0
+  },
+  "13480": {
+    "id": 13480,
+    "name": "European Economic and military union",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13484": {
+    "id": 13484,
+    "name": "Makos Cat Cafe",
+    "rank": 999,
+    "score": 9057.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13489": {
+    "id": 13489,
+    "name": "Lobotomy Corp",
+    "rank": 999,
+    "score": 63492.31,
+    "cities": 0,
+    "members": 0
+  },
+  "13492": {
+    "id": 13492,
+    "name": "Karma is a cat",
+    "rank": 999,
+    "score": 9400.5,
+    "cities": 0,
+    "members": 0
+  },
+  "13498": {
+    "id": 13498,
+    "name": "The Aequitas Union",
+    "rank": 999,
+    "score": 2408.71,
+    "cities": 0,
+    "members": 0
+  },
+  "13503": {
+    "id": 13503,
+    "name": "The Sovereign Coalition of Altheris",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13518": {
+    "id": 13518,
+    "name": "Derby Gangsters",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13524": {
+    "id": 13524,
+    "name": "The Patriots",
+    "rank": 999,
+    "score": 1131.34,
+    "cities": 0,
+    "members": 0
+  },
+  "13525": {
+    "id": 13525,
+    "name": "The Astral Order",
+    "rank": 999,
+    "score": 4248.23,
+    "cities": 0,
+    "members": 0
+  },
+  "13528": {
+    "id": 13528,
+    "name": "Holy Order of Kingdoms",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13537": {
+    "id": 13537,
+    "name": "Cerberus",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13547": {
+    "id": 13547,
+    "name": "Chiss Ascendancy",
+    "rank": 999,
+    "score": 3907.31,
+    "cities": 0,
+    "members": 0
+  },
+  "13551": {
+    "id": 13551,
+    "name": "Really dont Join",
+    "rank": 999,
+    "score": 922.96,
+    "cities": 0,
+    "members": 0
+  },
+  "13552": {
+    "id": 13552,
+    "name": "The Hanseatic League",
+    "rank": 999,
+    "score": 1082.87,
+    "cities": 0,
+    "members": 0
+  },
+  "13555": {
+    "id": 13555,
+    "name": "Aurelia Dominion Accord",
+    "rank": 999,
+    "score": 2451.68,
+    "cities": 0,
+    "members": 0
+  },
+  "13569": {
+    "id": 13569,
+    "name": "The Republic of the Natural order",
+    "rank": 999,
+    "score": 746.72,
+    "cities": 0,
+    "members": 0
+  },
+  "13572": {
+    "id": 13572,
+    "name": "The Rookie Alliance",
+    "rank": 999,
+    "score": 862.14,
+    "cities": 0,
+    "members": 0
+  },
+  "13578": {
+    "id": 13578,
+    "name": "The Alliance of Izmir",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13579": {
+    "id": 13579,
+    "name": "Hwarangdo",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13595": {
+    "id": 13595,
+    "name": "Mythic",
+    "rank": 999,
+    "score": 11487.5,
+    "cities": 0,
+    "members": 0
+  },
+  "13596": {
+    "id": 13596,
+    "name": "Paragons of the True King",
+    "rank": 999,
+    "score": 1712.18,
+    "cities": 0,
+    "members": 0
+  },
+  "13600": {
+    "id": 13600,
+    "name": "Bund der deutschen Sozialisten",
+    "rank": 999,
+    "score": 4290.09,
+    "cities": 0,
+    "members": 0
+  },
+  "13603": {
+    "id": 13603,
+    "name": "The great communist alliance",
+    "rank": 999,
+    "score": 5119.65,
+    "cities": 0,
+    "members": 0
+  },
+  "13609": {
+    "id": 13609,
+    "name": "Santas Crypt",
+    "rank": 999,
+    "score": 16345.85,
+    "cities": 0,
+    "members": 0
+  },
+  "13612": {
+    "id": 13612,
+    "name": "Sacred Cornbread",
+    "rank": 999,
+    "score": 78348.83,
+    "cities": 0,
+    "members": 0
+  },
+  "13617": {
+    "id": 13617,
+    "name": "Sons of Viceroy",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13622": {
+    "id": 13622,
+    "name": "The Crimson Tribunal",
+    "rank": 999,
+    "score": 1254.24,
+    "cities": 0,
+    "members": 0
+  },
+  "13626": {
+    "id": 13626,
+    "name": "laughing dead",
+    "rank": 999,
+    "score": 1077.94,
+    "cities": 0,
+    "members": 0
+  },
+  "13633": {
+    "id": 13633,
+    "name": "Baltic Sea Pirates",
+    "rank": 999,
+    "score": 4298.5,
+    "cities": 0,
+    "members": 0
+  },
+  "13638": {
+    "id": 13638,
+    "name": "Tea Bois Schizo Raft",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13639": {
+    "id": 13639,
+    "name": "Coalition",
+    "rank": 999,
+    "score": 388.45,
+    "cities": 0,
+    "members": 0
+  },
+  "13646": {
+    "id": 13646,
+    "name": "Free or Dead",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13658": {
+    "id": 13658,
+    "name": "The Laboratory",
+    "rank": 999,
+    "score": 51862.96,
+    "cities": 0,
+    "members": 0
+  },
+  "13668": {
+    "id": 13668,
+    "name": "Unga Bunga",
+    "rank": 999,
+    "score": 2403.2,
+    "cities": 0,
+    "members": 0
+  },
+  "13670": {
+    "id": 13670,
+    "name": "Shark Tank",
+    "rank": 999,
+    "score": 51819.06,
+    "cities": 0,
+    "members": 0
+  },
+  "13674": {
+    "id": 13674,
+    "name": "European Socialist allies",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13680": {
+    "id": 13680,
+    "name": "The Anvil Of War",
+    "rank": 999,
+    "score": 2003.21,
+    "cities": 0,
+    "members": 0
+  },
+  "13685": {
+    "id": 13685,
+    "name": "Imperialis",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13689": {
+    "id": 13689,
+    "name": "Highborn Society",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13690": {
+    "id": 13690,
+    "name": "LCS - Lower Class Supply",
+    "rank": 999,
+    "score": 1077.54,
+    "cities": 0,
+    "members": 0
+  },
+  "13697": {
+    "id": 13697,
+    "name": "The Professional defense corp",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13701": {
+    "id": 13701,
+    "name": "World Order",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13703": {
+    "id": 13703,
+    "name": "United of Free States",
+    "rank": 999,
+    "score": 3844.16,
+    "cities": 0,
+    "members": 0
+  },
+  "13704": {
+    "id": 13704,
+    "name": "The Jamahiriya",
+    "rank": 999,
+    "score": 1007.79,
+    "cities": 0,
+    "members": 0
+  },
+  "13706": {
+    "id": 13706,
+    "name": "U N M",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13711": {
+    "id": 13711,
+    "name": "Brigade North",
+    "rank": 999,
+    "score": 484.44,
+    "cities": 0,
+    "members": 0
+  },
+  "13713": {
+    "id": 13713,
+    "name": "The Crow Lords",
+    "rank": 999,
+    "score": 853.68,
+    "cities": 0,
+    "members": 0
+  },
+  "13716": {
+    "id": 13716,
+    "name": "The United States of Orbis",
+    "rank": 999,
+    "score": 395.54,
+    "cities": 0,
+    "members": 0
+  },
+  "13721": {
+    "id": 13721,
+    "name": "The Warborn",
+    "rank": 999,
+    "score": 2510.09,
+    "cities": 0,
+    "members": 0
+  },
+  "13723": {
+    "id": 13723,
+    "name": "Black Sheep",
+    "rank": 999,
+    "score": 14928.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13735": {
+    "id": 13735,
+    "name": "Sprova Pact",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13739": {
+    "id": 13739,
+    "name": "The Empire of PPCH",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13742": {
+    "id": 13742,
+    "name": "Union Of Independent Nations",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13743": {
+    "id": 13743,
+    "name": "The Seas",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13746": {
+    "id": 13746,
+    "name": "Gothac",
+    "rank": 999,
+    "score": 1251.14,
+    "cities": 0,
+    "members": 0
+  },
+  "13747": {
+    "id": 13747,
+    "name": "Pennzoiline",
+    "rank": 999,
+    "score": 1088.3,
+    "cities": 0,
+    "members": 0
+  },
+  "13756": {
+    "id": 13756,
+    "name": "THE SOVEREIGN SYNDICATE",
+    "rank": 999,
+    "score": 20362.53,
+    "cities": 0,
+    "members": 0
+  },
+  "13759": {
+    "id": 13759,
+    "name": "The Expanse",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13760": {
+    "id": 13760,
+    "name": "ASEC",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13762": {
+    "id": 13762,
+    "name": "General Area of Two Ostriches",
+    "rank": 999,
+    "score": 17479.97,
+    "cities": 0,
+    "members": 0
+  },
+  "13784": {
+    "id": 13784,
+    "name": "United Nations of Earth",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13785": {
+    "id": 13785,
+    "name": "Chimera",
+    "rank": 999,
+    "score": 10038.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13798": {
+    "id": 13798,
+    "name": "Vesperian Union",
+    "rank": 999,
+    "score": 2971.44,
+    "cities": 0,
+    "members": 0
+  },
+  "13801": {
+    "id": 13801,
+    "name": "Romae",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13807": {
+    "id": 13807,
+    "name": "Nope Alliance",
+    "rank": 999,
+    "score": 47876.72,
+    "cities": 0,
+    "members": 0
+  },
+  "13809": {
+    "id": 13809,
+    "name": "Borgs Cat Cafe",
+    "rank": 999,
+    "score": 7740.25,
+    "cities": 0,
+    "members": 0
+  },
+  "13813": {
+    "id": 13813,
+    "name": "Task Forces",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13816": {
+    "id": 13816,
+    "name": "Protectorate Alliance of Verenthia",
+    "rank": 999,
+    "score": 1616.95,
+    "cities": 0,
+    "members": 0
+  },
+  "13820": {
+    "id": 13820,
+    "name": "Galactic Federation of Orbis",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13822": {
+    "id": 13822,
+    "name": "Grand Empire of Publicaebelli",
+    "rank": 999,
+    "score": 1164.98,
+    "cities": 0,
+    "members": 0
+  },
+  "13824": {
+    "id": 13824,
+    "name": "Army Without Borders",
+    "rank": 999,
+    "score": 3964.28,
+    "cities": 0,
+    "members": 0
+  },
+  "13825": {
+    "id": 13825,
+    "name": "The Baba Yaga",
+    "rank": 999,
+    "score": 5084.33,
+    "cities": 0,
+    "members": 0
+  },
+  "13828": {
+    "id": 13828,
+    "name": "Registered Infra Offenders",
+    "rank": 999,
+    "score": 69000.48,
+    "cities": 0,
+    "members": 0
+  },
+  "13831": {
+    "id": 13831,
+    "name": "Libertas",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13832": {
+    "id": 13832,
+    "name": "Landball Nations Alliance",
+    "rank": 999,
+    "score": 1284.67,
+    "cities": 0,
+    "members": 0
+  },
+  "13836": {
+    "id": 13836,
+    "name": "Only Nippe",
+    "rank": 999,
+    "score": 1776.78,
+    "cities": 0,
+    "members": 0
+  },
+  "13839": {
+    "id": 13839,
+    "name": "Wolf Union",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13841": {
+    "id": 13841,
+    "name": "The United Alliance of Nations",
+    "rank": 999,
+    "score": 2129.7,
+    "cities": 0,
+    "members": 0
+  },
+  "13842": {
+    "id": 13842,
+    "name": "Mag",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13843": {
+    "id": 13843,
+    "name": "Miedzymorze",
+    "rank": 999,
+    "score": 2022.97,
+    "cities": 0,
+    "members": 0
+  },
+  "13844": {
+    "id": 13844,
+    "name": "Brotherhood of Spartans",
+    "rank": 999,
+    "score": 3531.74,
+    "cities": 0,
+    "members": 0
+  },
+  "13849": {
+    "id": 13849,
+    "name": "IS Phobia Divided States",
+    "rank": 999,
+    "score": 2097.35,
+    "cities": 0,
+    "members": 0
+  },
+  "13854": {
+    "id": 13854,
+    "name": "JESEmpire",
+    "rank": 999,
+    "score": 882.67,
+    "cities": 0,
+    "members": 0
+  },
+  "13855": {
+    "id": 13855,
+    "name": "epicaa",
+    "rank": 999,
+    "score": 5189.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13856": {
+    "id": 13856,
+    "name": "Hermit socialists",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13858": {
+    "id": 13858,
+    "name": "The League Of Unity",
+    "rank": 999,
+    "score": 1883.94,
+    "cities": 0,
+    "members": 0
+  },
+  "13859": {
+    "id": 13859,
+    "name": "Aquilon",
+    "rank": 999,
+    "score": 7905.32,
+    "cities": 0,
+    "members": 0
+  },
+  "13860": {
+    "id": 13860,
+    "name": "TAPs Angels",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13862": {
+    "id": 13862,
+    "name": "Yr Undeb Celtaidd",
+    "rank": 999,
+    "score": 3690.39,
+    "cities": 0,
+    "members": 0
+  },
+  "13868": {
+    "id": 13868,
+    "name": "Goldbier",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13874": {
+    "id": 13874,
+    "name": "Lilac",
+    "rank": 999,
+    "score": 9972.5,
+    "cities": 0,
+    "members": 0
+  },
+  "13880": {
+    "id": 13880,
+    "name": "Leviathan",
+    "rank": 999,
+    "score": 273350.43,
+    "cities": 0,
+    "members": 0
+  },
+  "13884": {
+    "id": 13884,
+    "name": "Central Bank of Egypt",
+    "rank": 999,
+    "score": 9756.5,
+    "cities": 0,
+    "members": 0
+  },
+  "13890": {
+    "id": 13890,
+    "name": "Eastern Bloc",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13891": {
+    "id": 13891,
+    "name": "Shanghai Commune",
+    "rank": 999,
+    "score": 7150.75,
+    "cities": 0,
+    "members": 0
+  },
+  "13893": {
+    "id": 13893,
+    "name": "The Triumvirate",
+    "rank": 999,
+    "score": 11019.65,
+    "cities": 0,
+    "members": 0
+  },
+  "13895": {
+    "id": 13895,
+    "name": "Paradise Island",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13896": {
+    "id": 13896,
+    "name": "Ayyslamic Britannian Empire",
+    "rank": 999,
+    "score": 10708.25,
+    "cities": 0,
+    "members": 0
+  },
+  "13899": {
+    "id": 13899,
+    "name": "Abby",
+    "rank": 999,
+    "score": 3797.42,
+    "cities": 0,
+    "members": 0
+  },
+  "13901": {
+    "id": 13901,
+    "name": "The Capitol",
+    "rank": 999,
+    "score": 11624.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13902": {
+    "id": 13902,
+    "name": "Ministry of Magic",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13903": {
+    "id": 13903,
+    "name": "Allied Defence Accord",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13907": {
+    "id": 13907,
+    "name": "Mercenaries of Orbis",
+    "rank": 999,
+    "score": 75910.51,
+    "cities": 0,
+    "members": 0
+  },
+  "13908": {
+    "id": 13908,
+    "name": "wyoming alliance",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13912": {
+    "id": 13912,
+    "name": "Battle Tendency",
+    "rank": 999,
+    "score": 10141.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13914": {
+    "id": 13914,
+    "name": "Anti-coalition of the Emporor",
+    "rank": 999,
+    "score": 3091.56,
+    "cities": 0,
+    "members": 0
+  },
+  "13920": {
+    "id": 13920,
+    "name": "Levi Girliepop 2 Electric Boogaloo",
+    "rank": 999,
+    "score": 5216.22,
+    "cities": 0,
+    "members": 0
+  },
+  "13930": {
+    "id": 13930,
+    "name": "Interstellar Coalition",
+    "rank": 999,
+    "score": 3685.73,
+    "cities": 0,
+    "members": 0
+  },
+  "13935": {
+    "id": 13935,
+    "name": "Voodoo",
+    "rank": 999,
+    "score": 154.65,
+    "cities": 0,
+    "members": 0
+  },
+  "13966": {
+    "id": 13966,
+    "name": "The Slow And Steady",
+    "rank": 999,
+    "score": 13189.6,
+    "cities": 0,
+    "members": 0
+  },
+  "13967": {
+    "id": 13967,
+    "name": "Burdia Pact",
+    "rank": 999,
+    "score": 1753.2,
+    "cities": 0,
+    "members": 0
+  },
+  "13972": {
+    "id": 13972,
+    "name": "OTAN",
+    "rank": 999,
+    "score": 5593.45,
+    "cities": 0,
+    "members": 0
+  },
+  "13973": {
+    "id": 13973,
+    "name": "Alliance McAllianceface",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13981": {
+    "id": 13981,
+    "name": "Imperium Invictum",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13984": {
+    "id": 13984,
+    "name": "The Underworld",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13986": {
+    "id": 13986,
+    "name": "UNITED SINDH INTERNATIONAL",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "13987": {
+    "id": 13987,
+    "name": "The Apothecary",
+    "rank": 999,
+    "score": 7560.69,
+    "cities": 0,
+    "members": 0
+  },
+  "14000": {
+    "id": 14000,
+    "name": "Citadel",
+    "rank": 999,
+    "score": 827472.28,
+    "cities": 0,
+    "members": 0
+  },
+  "14002": {
+    "id": 14002,
+    "name": "Rogue States Inc",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14005": {
+    "id": 14005,
+    "name": "AOC",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14008": {
+    "id": 14008,
+    "name": "Australian Confederation",
+    "rank": 999,
+    "score": 2504.94,
+    "cities": 0,
+    "members": 0
+  },
+  "14013": {
+    "id": 14013,
+    "name": "Eaten by Nanami",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14020": {
+    "id": 14020,
+    "name": "FRIENDS",
+    "rank": 999,
+    "score": 911.25,
+    "cities": 0,
+    "members": 0
+  },
+  "14035": {
+    "id": 14035,
+    "name": "The Iron Order",
+    "rank": 999,
+    "score": 2839.82,
+    "cities": 0,
+    "members": 0
+  },
+  "14036": {
+    "id": 14036,
+    "name": "The Commonwealth of orbis",
+    "rank": 999,
+    "score": 54526.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14037": {
+    "id": 14037,
+    "name": "Boys Love Alliance",
+    "rank": 999,
+    "score": 4041.5,
+    "cities": 0,
+    "members": 0
+  },
+  "14040": {
+    "id": 14040,
+    "name": "Lunthree",
+    "rank": 999,
+    "score": 1208.4,
+    "cities": 0,
+    "members": 0
+  },
+  "14041": {
+    "id": 14041,
+    "name": "The Isolationists",
+    "rank": 999,
+    "score": 1554.73,
+    "cities": 0,
+    "members": 0
+  },
+  "14043": {
+    "id": 14043,
+    "name": "Egrishian Church of God Almighty",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14044": {
+    "id": 14044,
+    "name": "United Dorset",
+    "rank": 999,
+    "score": 8358.19,
+    "cities": 0,
+    "members": 0
+  },
+  "14045": {
+    "id": 14045,
+    "name": "The alliance of cool",
+    "rank": 999,
+    "score": 630.5,
+    "cities": 0,
+    "members": 0
+  },
+  "14047": {
+    "id": 14047,
+    "name": "The Revelation",
+    "rank": 999,
+    "score": 9303.89,
+    "cities": 0,
+    "members": 0
+  },
+  "14048": {
+    "id": 14048,
+    "name": "The Friendship Pact of Orbis",
+    "rank": 999,
+    "score": 1943.88,
+    "cities": 0,
+    "members": 0
+  },
+  "14049": {
+    "id": 14049,
+    "name": "Ten Toes Crew",
+    "rank": 999,
+    "score": 1145.01,
+    "cities": 0,
+    "members": 0
+  },
+  "14051": {
+    "id": 14051,
+    "name": "Muslim world",
+    "rank": 999,
+    "score": 1327.16,
+    "cities": 0,
+    "members": 0
+  },
+  "14055": {
+    "id": 14055,
+    "name": "Pirates Palace",
+    "rank": 999,
+    "score": 807.03,
+    "cities": 0,
+    "members": 0
+  },
+  "14056": {
+    "id": 14056,
+    "name": "Nuka-World",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14058": {
+    "id": 14058,
+    "name": "Gulpin Monarchy",
+    "rank": 999,
+    "score": 6563.32,
+    "cities": 0,
+    "members": 0
+  },
+  "14061": {
+    "id": 14061,
+    "name": "Wealth",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14064": {
+    "id": 14064,
+    "name": "Union of Small Socialist States",
+    "rank": 999,
+    "score": 1164.34,
+    "cities": 0,
+    "members": 0
+  },
+  "14067": {
+    "id": 14067,
+    "name": "Asteria Group",
+    "rank": 999,
+    "score": 4264.22,
+    "cities": 0,
+    "members": 0
+  },
+  "14068": {
+    "id": 14068,
+    "name": "Global Partnership/Security Union",
+    "rank": 999,
+    "score": 1482.81,
+    "cities": 0,
+    "members": 0
+  },
+  "14070": {
+    "id": 14070,
+    "name": "Assembly Of Jewish States",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14076": {
+    "id": 14076,
+    "name": "The Diamond Imperium",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14079": {
+    "id": 14079,
+    "name": "Defensive Treaty Organization",
+    "rank": 999,
+    "score": 8404.48,
+    "cities": 0,
+    "members": 0
+  },
+  "14080": {
+    "id": 14080,
+    "name": "Non-discordians",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14082": {
+    "id": 14082,
+    "name": "House of Tharros",
+    "rank": 999,
+    "score": 38843.97,
+    "cities": 0,
+    "members": 0
+  },
+  "14083": {
+    "id": 14083,
+    "name": "UNITED AFRICAN NATIONS",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14091": {
+    "id": 14091,
+    "name": "Alliance of the weak",
+    "rank": 999,
+    "score": 2662.34,
+    "cities": 0,
+    "members": 0
+  },
+  "14093": {
+    "id": 14093,
+    "name": "Heart of Gold",
+    "rank": 999,
+    "score": 7381.5,
+    "cities": 0,
+    "members": 0
+  },
+  "14096": {
+    "id": 14096,
+    "name": "Crimson Legion",
+    "rank": 999,
+    "score": 264.6,
+    "cities": 0,
+    "members": 0
+  },
+  "14099": {
+    "id": 14099,
+    "name": "Orbis Alliance Banking Service",
+    "rank": 999,
+    "score": 1647.95,
+    "cities": 0,
+    "members": 0
+  },
+  "14100": {
+    "id": 14100,
+    "name": "Death Watch",
+    "rank": 999,
+    "score": 39334.64,
+    "cities": 0,
+    "members": 0
+  },
+  "14101": {
+    "id": 14101,
+    "name": "Greater House Atreides",
+    "rank": 999,
+    "score": 1554.37,
+    "cities": 0,
+    "members": 0
+  },
+  "14103": {
+    "id": 14103,
+    "name": "Bugs holy land",
+    "rank": 999,
+    "score": 7638.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14106": {
+    "id": 14106,
+    "name": "Teto Defense Alliance",
+    "rank": 999,
+    "score": 2122.53,
+    "cities": 0,
+    "members": 0
+  },
+  "14110": {
+    "id": 14110,
+    "name": "Prime Banking",
+    "rank": 999,
+    "score": 2667.87,
+    "cities": 0,
+    "members": 0
+  },
+  "14112": {
+    "id": 14112,
+    "name": "Alliance",
+    "rank": 999,
+    "score": 1120.82,
+    "cities": 0,
+    "members": 0
+  },
+  "14113": {
+    "id": 14113,
+    "name": "Echelon Capital",
+    "rank": 999,
+    "score": 41.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14114": {
+    "id": 14114,
+    "name": "Hellfire",
+    "rank": 999,
+    "score": 6132.03,
+    "cities": 0,
+    "members": 0
+  },
+  "14119": {
+    "id": 14119,
+    "name": "The Republic of Canaan",
+    "rank": 999,
+    "score": 2365.68,
+    "cities": 0,
+    "members": 0
+  },
+  "14123": {
+    "id": 14123,
+    "name": "Sesom States of America",
+    "rank": 999,
+    "score": 1181.01,
+    "cities": 0,
+    "members": 0
+  },
+  "14124": {
+    "id": 14124,
+    "name": "The Union of Nations",
+    "rank": 999,
+    "score": 61486.81,
+    "cities": 0,
+    "members": 0
+  },
+  "14127": {
+    "id": 14127,
+    "name": "Novus Victorium",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14128": {
+    "id": 14128,
+    "name": "potato x4",
+    "rank": 999,
+    "score": 7189.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14129": {
+    "id": 14129,
+    "name": "The Republic of Orbis",
+    "rank": 999,
+    "score": 5478.35,
+    "cities": 0,
+    "members": 0
+  },
+  "14136": {
+    "id": 14136,
+    "name": "Beta Quadrant Coalition",
+    "rank": 999,
+    "score": 1092.46,
+    "cities": 0,
+    "members": 0
+  },
+  "14137": {
+    "id": 14137,
+    "name": "The Grand Communist Alliance",
+    "rank": 999,
+    "score": 70741.06,
+    "cities": 0,
+    "members": 0
+  },
+  "14147": {
+    "id": 14147,
+    "name": "Eternal Phoenix",
+    "rank": 999,
+    "score": 76629.52,
+    "cities": 0,
+    "members": 0
+  },
+  "14151": {
+    "id": 14151,
+    "name": "Independence Alliance",
+    "rank": 999,
+    "score": 5808.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14152": {
+    "id": 14152,
+    "name": "Penguin Logistics",
+    "rank": 999,
+    "score": 6967.2,
+    "cities": 0,
+    "members": 0
+  },
+  "14156": {
+    "id": 14156,
+    "name": "Royal Orbis Aluminium Company",
+    "rank": 999,
+    "score": 9104.33,
+    "cities": 0,
+    "members": 0
+  },
+  "14158": {
+    "id": 14158,
+    "name": "The New Pravidian Coalition",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14163": {
+    "id": 14163,
+    "name": "AN0NYMOUS",
+    "rank": 999,
+    "score": 38374.88,
+    "cities": 0,
+    "members": 0
+  },
+  "14168": {
+    "id": 14168,
+    "name": "The Cool Beans",
+    "rank": 999,
+    "score": 2722.26,
+    "cities": 0,
+    "members": 0
+  },
+  "14173": {
+    "id": 14173,
+    "name": "SputnikZ",
+    "rank": 999,
+    "score": 3707.6,
+    "cities": 0,
+    "members": 0
+  },
+  "14175": {
+    "id": 14175,
+    "name": "Dominion Accord",
+    "rank": 999,
+    "score": 1807.06,
+    "cities": 0,
+    "members": 0
+  },
+  "14177": {
+    "id": 14177,
+    "name": "Northern Concord",
+    "rank": 999,
+    "score": 14264.13,
+    "cities": 0,
+    "members": 0
+  },
+  "14179": {
+    "id": 14179,
+    "name": "Dumbledores Army",
+    "rank": 999,
+    "score": 1247.23,
+    "cities": 0,
+    "members": 0
+  },
+  "14190": {
+    "id": 14190,
+    "name": "Nameless Treasure",
+    "rank": 999,
+    "score": 1079.21,
+    "cities": 0,
+    "members": 0
+  },
+  "14194": {
+    "id": 14194,
+    "name": "The European Pact Of Unity",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14196": {
+    "id": 14196,
+    "name": "xX_ALL14NC3_Xx",
+    "rank": 999,
+    "score": 33216.66,
+    "cities": 0,
+    "members": 0
+  },
+  "14198": {
+    "id": 14198,
+    "name": "The SecondGalactic Empire",
+    "rank": 999,
+    "score": 3726.1,
+    "cities": 0,
+    "members": 0
+  },
+  "14200": {
+    "id": 14200,
+    "name": "Empiria",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14201": {
+    "id": 14201,
+    "name": "The Elemental 4",
+    "rank": 999,
+    "score": 42.34,
+    "cities": 0,
+    "members": 0
+  },
+  "14203": {
+    "id": 14203,
+    "name": "BRICS UNION",
+    "rank": 999,
+    "score": 1939.64,
+    "cities": 0,
+    "members": 0
+  },
+  "14205": {
+    "id": 14205,
+    "name": "Cali Cartel",
+    "rank": 999,
+    "score": 122651.29,
+    "cities": 0,
+    "members": 0
+  },
+  "14207": {
+    "id": 14207,
+    "name": "INTRA",
+    "rank": 999,
+    "score": 4264.2,
+    "cities": 0,
+    "members": 0
+  },
+  "14209": {
+    "id": 14209,
+    "name": "Caribbean Community",
+    "rank": 999,
+    "score": 1474.58,
+    "cities": 0,
+    "members": 0
+  },
+  "14211": {
+    "id": 14211,
+    "name": "Castle Camelot",
+    "rank": 999,
+    "score": 12372.6,
+    "cities": 0,
+    "members": 0
+  },
+  "14212": {
+    "id": 14212,
+    "name": "Federation of the feline front",
+    "rank": 999,
+    "score": 158.61,
+    "cities": 0,
+    "members": 0
+  },
+  "14214": {
+    "id": 14214,
+    "name": "Revolutionary Indigenous committee",
+    "rank": 999,
+    "score": 2350.68,
+    "cities": 0,
+    "members": 0
+  },
+  "14217": {
+    "id": 14217,
+    "name": "Santa Alianza Global",
+    "rank": 999,
+    "score": 1411.82,
+    "cities": 0,
+    "members": 0
+  },
+  "14221": {
+    "id": 14221,
+    "name": "The Rising Coast",
+    "rank": 999,
+    "score": 2436.81,
+    "cities": 0,
+    "members": 0
+  },
+  "14223": {
+    "id": 14223,
+    "name": "Haikyu",
+    "rank": 999,
+    "score": 1249.57,
+    "cities": 0,
+    "members": 0
+  },
+  "14225": {
+    "id": 14225,
+    "name": "Nights Watch",
+    "rank": 999,
+    "score": 73259.57,
+    "cities": 0,
+    "members": 0
+  },
+  "14229": {
+    "id": 14229,
+    "name": "Socialist International",
+    "rank": 999,
+    "score": 3382.85,
+    "cities": 0,
+    "members": 0
+  },
+  "14230": {
+    "id": 14230,
+    "name": "The Reclaimed Flame",
+    "rank": 999,
+    "score": 17375.51,
+    "cities": 0,
+    "members": 0
+  },
+  "14231": {
+    "id": 14231,
+    "name": "Codex Vault",
+    "rank": 999,
+    "score": 4174.81,
+    "cities": 0,
+    "members": 0
+  },
+  "14234": {
+    "id": 14234,
+    "name": "The Eternal Accords",
+    "rank": 999,
+    "score": 9470.66,
+    "cities": 0,
+    "members": 0
+  },
+  "14235": {
+    "id": 14235,
+    "name": "MUSTAAAAAAAAAAAAAAAAAAAARD",
+    "rank": 999,
+    "score": 2567.13,
+    "cities": 0,
+    "members": 0
+  },
+  "14237": {
+    "id": 14237,
+    "name": "Liberty Legion",
+    "rank": 999,
+    "score": 2473.62,
+    "cities": 0,
+    "members": 0
+  },
+  "14239": {
+    "id": 14239,
+    "name": "Paramount coin Guild",
+    "rank": 999,
+    "score": 210.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14240": {
+    "id": 14240,
+    "name": "Eternal Sunshine",
+    "rank": 999,
+    "score": 2559.2,
+    "cities": 0,
+    "members": 0
+  },
+  "14242": {
+    "id": 14242,
+    "name": "Infinity",
+    "rank": 999,
+    "score": 165276.14,
+    "cities": 0,
+    "members": 0
+  },
+  "14244": {
+    "id": 14244,
+    "name": "Raytastic",
+    "rank": 999,
+    "score": 1924.84,
+    "cities": 0,
+    "members": 0
+  },
+  "14245": {
+    "id": 14245,
+    "name": "The Godfathers",
+    "rank": 999,
+    "score": 56808.53,
+    "cities": 0,
+    "members": 0
+  },
+  "14246": {
+    "id": 14246,
+    "name": "malaysia kingdom",
+    "rank": 999,
+    "score": 822.22,
+    "cities": 0,
+    "members": 0
+  },
+  "14247": {
+    "id": 14247,
+    "name": "Ireland",
+    "rank": 999,
+    "score": 941.78,
+    "cities": 0,
+    "members": 0
+  },
+  "14248": {
+    "id": 14248,
+    "name": "The Iron Vault",
+    "rank": 999,
+    "score": 6865.77,
+    "cities": 0,
+    "members": 0
+  },
+  "14251": {
+    "id": 14251,
+    "name": "Secret Sauce",
+    "rank": 999,
+    "score": 1124.43,
+    "cities": 0,
+    "members": 0
+  },
+  "14252": {
+    "id": 14252,
+    "name": "The Fraternity",
+    "rank": 999,
+    "score": 2468.78,
+    "cities": 0,
+    "members": 0
+  },
+  "14254": {
+    "id": 14254,
+    "name": "Elastic Bands",
+    "rank": 999,
+    "score": 1007.64,
+    "cities": 0,
+    "members": 0
+  },
+  "14256": {
+    "id": 14256,
+    "name": "One Big Blank",
+    "rank": 999,
+    "score": 1124.12,
+    "cities": 0,
+    "members": 0
+  },
+  "14257": {
+    "id": 14257,
+    "name": "The Paradise Alliance",
+    "rank": 999,
+    "score": 732.5,
+    "cities": 0,
+    "members": 0
+  },
+  "14258": {
+    "id": 14258,
+    "name": "Your Moms House",
+    "rank": 999,
+    "score": 10658.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14259": {
+    "id": 14259,
+    "name": "Otoko",
+    "rank": 999,
+    "score": 975.93,
+    "cities": 0,
+    "members": 0
+  },
+  "14260": {
+    "id": 14260,
+    "name": "Freetopia",
+    "rank": 999,
+    "score": 1078.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14261": {
+    "id": 14261,
+    "name": "Starborne",
+    "rank": 999,
+    "score": 13576.74,
+    "cities": 0,
+    "members": 0
+  },
+  "14262": {
+    "id": 14262,
+    "name": "Holy Empire",
+    "rank": 999,
+    "score": 975.38,
+    "cities": 0,
+    "members": 0
+  },
+  "14263": {
+    "id": 14263,
+    "name": "Tollo Alliance",
+    "rank": 999,
+    "score": 1162.57,
+    "cities": 0,
+    "members": 0
+  },
+  "14265": {
+    "id": 14265,
+    "name": "Union of Socialist Imperialist States",
+    "rank": 999,
+    "score": 3410.15,
+    "cities": 0,
+    "members": 0
+  },
+  "14266": {
+    "id": 14266,
+    "name": "Special Task Force",
+    "rank": 999,
+    "score": 83.65,
+    "cities": 0,
+    "members": 0
+  },
+  "14267": {
+    "id": 14267,
+    "name": "Internal Peace",
+    "rank": 999,
+    "score": 892.02,
+    "cities": 0,
+    "members": 0
+  },
+  "14271": {
+    "id": 14271,
+    "name": "Batroom",
+    "rank": 999,
+    "score": 2341.9,
+    "cities": 0,
+    "members": 0
+  },
+  "14272": {
+    "id": 14272,
+    "name": "Zhong",
+    "rank": 999,
+    "score": 1011.16,
+    "cities": 0,
+    "members": 0
+  },
+  "14274": {
+    "id": 14274,
+    "name": "United Alliances of Orbis",
+    "rank": 999,
+    "score": 1316.29,
+    "cities": 0,
+    "members": 0
+  },
+  "14278": {
+    "id": 14278,
+    "name": "Hangover",
+    "rank": 999,
+    "score": 14854.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14282": {
+    "id": 14282,
+    "name": "The High Council Of Coin",
+    "rank": 999,
+    "score": 4161.74,
+    "cities": 0,
+    "members": 0
+  },
+  "14283": {
+    "id": 14283,
+    "name": "CMT8-1945",
+    "rank": 999,
+    "score": 2783.36,
+    "cities": 0,
+    "members": 0
+  },
+  "14285": {
+    "id": 14285,
+    "name": "Weyland Yutani Corporation",
+    "rank": 999,
+    "score": 16562.29,
+    "cities": 0,
+    "members": 0
+  },
+  "14286": {
+    "id": 14286,
+    "name": "Cryo Alliance",
+    "rank": 999,
+    "score": 2219.63,
+    "cities": 0,
+    "members": 0
+  },
+  "14288": {
+    "id": 14288,
+    "name": "Wayneville Enterprises",
+    "rank": 999,
+    "score": 3713.15,
+    "cities": 0,
+    "members": 0
+  },
+  "14289": {
+    "id": 14289,
+    "name": "EEUUCOALITION",
+    "rank": 999,
+    "score": 1369.09,
+    "cities": 0,
+    "members": 0
+  },
+  "14291": {
+    "id": 14291,
+    "name": "GOAT Alliance",
+    "rank": 999,
+    "score": 1470.96,
+    "cities": 0,
+    "members": 0
+  },
+  "14293": {
+    "id": 14293,
+    "name": "Free Palestine",
+    "rank": 999,
+    "score": 7223.25,
+    "cities": 0,
+    "members": 0
+  },
+  "14294": {
+    "id": 14294,
+    "name": "Joint Pacific Fleet Treaty",
+    "rank": 999,
+    "score": 1327.95,
+    "cities": 0,
+    "members": 0
+  },
+  "14299": {
+    "id": 14299,
+    "name": "Yihh",
+    "rank": 999,
+    "score": 2469.34,
+    "cities": 0,
+    "members": 0
+  },
+  "14301": {
+    "id": 14301,
+    "name": "The A Team",
+    "rank": 999,
+    "score": 2882.86,
+    "cities": 0,
+    "members": 0
+  },
+  "14304": {
+    "id": 14304,
+    "name": "Mariners Apartment Complex",
+    "rank": 999,
+    "score": 8025.25,
+    "cities": 0,
+    "members": 0
+  },
+  "14305": {
+    "id": 14305,
+    "name": "The Crown Corporation",
+    "rank": 999,
+    "score": 9739.74,
+    "cities": 0,
+    "members": 0
+  },
+  "14306": {
+    "id": 14306,
+    "name": "Free GVH",
+    "rank": 999,
+    "score": 4316.7,
+    "cities": 0,
+    "members": 0
+  },
+  "14307": {
+    "id": 14307,
+    "name": "Africa Proconsularis",
+    "rank": 999,
+    "score": 23500.06,
+    "cities": 0,
+    "members": 0
+  },
+  "14310": {
+    "id": 14310,
+    "name": "The Sovereign Bastions",
+    "rank": 999,
+    "score": 1385.79,
+    "cities": 0,
+    "members": 0
+  },
+  "14311": {
+    "id": 14311,
+    "name": "United Patriots Alliance",
+    "rank": 999,
+    "score": 1341.17,
+    "cities": 0,
+    "members": 0
+  },
+  "14315": {
+    "id": 14315,
+    "name": "klop operazioni",
+    "rank": 999,
+    "score": 6553.13,
+    "cities": 0,
+    "members": 0
+  },
+  "14317": {
+    "id": 14317,
+    "name": "Treaty of Independence",
+    "rank": 999,
+    "score": 1899.52,
+    "cities": 0,
+    "members": 0
+  },
+  "14319": {
+    "id": 14319,
+    "name": "Kivaf",
+    "rank": 999,
+    "score": 2566.44,
+    "cities": 0,
+    "members": 0
+  },
+  "14322": {
+    "id": 14322,
+    "name": "Orbis Tech",
+    "rank": 999,
+    "score": 10.25,
+    "cities": 0,
+    "members": 0
+  },
+  "14323": {
+    "id": 14323,
+    "name": "Platypuses of the world",
+    "rank": 999,
+    "score": 1017.95,
+    "cities": 0,
+    "members": 0
+  },
+  "14325": {
+    "id": 14325,
+    "name": "Buccaneers of Carnation",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14326": {
+    "id": 14326,
+    "name": "Union of Soviet Socialist Republics",
+    "rank": 999,
+    "score": 42666.82,
+    "cities": 0,
+    "members": 0
+  },
+  "14327": {
+    "id": 14327,
+    "name": "WCC",
+    "rank": 999,
+    "score": 2221.22,
+    "cities": 0,
+    "members": 0
+  },
+  "14331": {
+    "id": 14331,
+    "name": "The Arras",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14332": {
+    "id": 14332,
+    "name": "Caesers",
+    "rank": 999,
+    "score": 2639.47,
+    "cities": 0,
+    "members": 0
+  },
+  "14334": {
+    "id": 14334,
+    "name": "The Golden Circle Entente",
+    "rank": 999,
+    "score": 5794.62,
+    "cities": 0,
+    "members": 0
+  },
+  "14336": {
+    "id": 14336,
+    "name": "Sovereign Union",
+    "rank": 999,
+    "score": 11178.12,
+    "cities": 0,
+    "members": 0
+  },
+  "14337": {
+    "id": 14337,
+    "name": "ToiletPaper",
+    "rank": 999,
+    "score": 4641.71,
+    "cities": 0,
+    "members": 0
+  },
+  "14340": {
+    "id": 14340,
+    "name": "Uzbekistan rules",
+    "rank": 999,
+    "score": 3624.58,
+    "cities": 0,
+    "members": 0
+  },
+  "14341": {
+    "id": 14341,
+    "name": "La Cosa Nostra",
+    "rank": 999,
+    "score": 28613.55,
+    "cities": 0,
+    "members": 0
+  },
+  "14343": {
+    "id": 14343,
+    "name": "wagwag",
+    "rank": 999,
+    "score": 2830.26,
+    "cities": 0,
+    "members": 0
+  },
+  "14344": {
+    "id": 14344,
+    "name": "Global Defence Corp",
+    "rank": 999,
+    "score": 15645.35,
+    "cities": 0,
+    "members": 0
+  },
+  "14345": {
+    "id": 14345,
+    "name": "Unc",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14346": {
+    "id": 14346,
+    "name": "Organization of American States",
+    "rank": 999,
+    "score": 1667.23,
+    "cities": 0,
+    "members": 0
+  },
+  "14348": {
+    "id": 14348,
+    "name": "Elysian",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14349": {
+    "id": 14349,
+    "name": "The Union",
+    "rank": 999,
+    "score": 1885.3,
+    "cities": 0,
+    "members": 0
+  },
+  "14351": {
+    "id": 14351,
+    "name": "Freexd",
+    "rank": 999,
+    "score": 2513.27,
+    "cities": 0,
+    "members": 0
+  },
+  "14352": {
+    "id": 14352,
+    "name": "Blood Eclipse",
+    "rank": 999,
+    "score": 8301.91,
+    "cities": 0,
+    "members": 0
+  },
+  "14353": {
+    "id": 14353,
+    "name": "The United Orbis Nations of Randomness",
+    "rank": 999,
+    "score": 4051.02,
+    "cities": 0,
+    "members": 0
+  },
+  "14354": {
+    "id": 14354,
+    "name": "Commonwealth Defense Force",
+    "rank": 999,
+    "score": 2264.44,
+    "cities": 0,
+    "members": 0
+  },
+  "14355": {
+    "id": 14355,
+    "name": "Baneforts",
+    "rank": 999,
+    "score": 5171.76,
+    "cities": 0,
+    "members": 0
+  },
+  "14356": {
+    "id": 14356,
+    "name": "Imperial Treaty Organization",
+    "rank": 999,
+    "score": 4836.91,
+    "cities": 0,
+    "members": 0
+  },
+  "14357": {
+    "id": 14357,
+    "name": "United Emirates of Orb",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14358": {
+    "id": 14358,
+    "name": "New Hanseatic League",
+    "rank": 999,
+    "score": 2927.5,
+    "cities": 0,
+    "members": 0
+  },
+  "14359": {
+    "id": 14359,
+    "name": "The true Alliance",
+    "rank": 999,
+    "score": 1474.13,
+    "cities": 0,
+    "members": 0
+  },
+  "14360": {
+    "id": 14360,
+    "name": "The Greater Canadian Alliance",
+    "rank": 999,
+    "score": 1380.07,
+    "cities": 0,
+    "members": 0
+  },
+  "14363": {
+    "id": 14363,
+    "name": "VPCat",
+    "rank": 999,
+    "score": 2556.92,
+    "cities": 0,
+    "members": 0
+  },
+  "14364": {
+    "id": 14364,
+    "name": "Your Sisters House",
+    "rank": 999,
+    "score": 2944.31,
+    "cities": 0,
+    "members": 0
+  },
+  "14366": {
+    "id": 14366,
+    "name": "Asas",
+    "rank": 999,
+    "score": 3140.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14367": {
+    "id": 14367,
+    "name": "Deterrent",
+    "rank": 999,
+    "score": 0.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14368": {
+    "id": 14368,
+    "name": "Zhou",
+    "rank": 999,
+    "score": 3010.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14371": {
+    "id": 14371,
+    "name": "Watch",
+    "rank": 999,
+    "score": 3729.77,
+    "cities": 0,
+    "members": 0
+  },
+  "14373": {
+    "id": 14373,
+    "name": "The Matrix",
+    "rank": 999,
+    "score": 2469.75,
+    "cities": 0,
+    "members": 0
+  },
+  "14374": {
+    "id": 14374,
+    "name": "Federation of America",
+    "rank": 999,
+    "score": 1943.78,
+    "cities": 0,
+    "members": 0
+  },
+  "14376": {
+    "id": 14376,
+    "name": "ThE GoLdEn HiVe",
+    "rank": 999,
+    "score": 1744.63,
+    "cities": 0,
+    "members": 0
+  },
+  "14377": {
+    "id": 14377,
+    "name": "Spamericx",
+    "rank": 999,
+    "score": 3205.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14378": {
+    "id": 14378,
+    "name": "The Citadel of Orbis",
+    "rank": 999,
+    "score": 1206.45,
+    "cities": 0,
+    "members": 0
+  },
+  "14380": {
+    "id": 14380,
+    "name": "Bear Republics",
+    "rank": 999,
+    "score": 2690.0,
+    "cities": 0,
+    "members": 0
+  },
+  "14381": {
+    "id": 14381,
+    "name": "Sentinel Coalition",
+    "rank": 999,
+    "score": 1118.63,
+    "cities": 0,
+    "members": 0
+  },
+  "14382": {
+    "id": 14382,
+    "name": "The Liberation Army",
+    "rank": 999,
+    "score": 3886.95,
+    "cities": 0,
+    "members": 0
+  },
+  "14383": {
+    "id": 14383,
+    "name": "Neoterra economic council",
+    "rank": 999,
+    "score": 1659.94,
+    "cities": 0,
+    "members": 0
+  },
+  "14384": {
+    "id": 14384,
+    "name": "laPLata",
+    "rank": 999,
+    "score": 2459.86,
+    "cities": 0,
+    "members": 0
+  }
+}
