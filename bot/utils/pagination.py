@@ -41,9 +41,11 @@ class ActivityPaginator(discord.ui.View):
         
         fields = []
         for idx, result in enumerate(page_results, start=1):
+            # Truncate field value to 1024 characters to avoid Discord limits
+            truncated_result = result[:1021] + "..." if len(result) > 1024 else result
             fields.append({
                 "name": "\u200b",
-                "value": result,
+                "value": truncated_result,
                 "inline": True
             })
         

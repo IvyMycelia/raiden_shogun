@@ -131,7 +131,12 @@ class PoliticsWarAPI:
                     missiles
                     nukes
                     projects
+                    project_bits
+                    turns_since_last_project
+                    wars_won
+                    wars_lost
                     central_intelligence_agency
+                    discord
                     military_research {{
                         ground_capacity
                         air_capacity
@@ -167,6 +172,17 @@ class PoliticsWarAPI:
                         hangar
                         drydock
                         factory
+                        farm
+                        steel_mill
+                        aluminum_refinery
+                        oil_refinery
+                        munitions_factory
+                        coal_mine
+                        oil_well
+                        uranium_mine
+                        iron_mine
+                        bauxite_mine
+                        lead_mine
                     }}
                     defensive_wars {{
                         id
@@ -230,6 +246,170 @@ class PoliticsWarAPI:
                     logger.error(f"🌐 GraphQL errors: {response['errors']}")
             return None
     
+    async def get_nations_batch_data(self, nation_ids: List[int], scope: str = "everything_scope") -> Optional[Dict[int, Dict]]:
+        """Get detailed nation data for multiple nations in a single API call."""
+        if not nation_ids:
+            return {}
+        
+        # Convert nation IDs to proper GraphQL array format
+        ids_str = ','.join(map(str, nation_ids))
+        
+        # Create a properly formatted GraphQL query with all the fields from get_nation_data
+        query = f"""query {{
+            nations(first: 500, vmode: false, id: [{ids_str}]) {{
+                data {{
+                    date
+                    id
+                    nation_name
+                    leader_name
+                    score
+                    color
+                    alliance_id
+                    alliance {{
+                        id
+                        name
+                        rank
+                    }}
+                    alliance_position
+                    last_active
+                    soldiers
+                    tanks
+                    aircraft
+                    ships
+                    spies
+                    missiles
+                    nukes
+                    projects
+                    project_bits
+                    turns_since_last_project
+                    wars_won
+                    wars_lost
+                    central_intelligence_agency
+                    discord
+                    military_research {{
+                        ground_capacity
+                        air_capacity
+                        naval_capacity
+                    }}
+                    vmode
+                    beige_turns
+                    money
+                    coal
+                    oil
+                    uranium
+                    iron
+                    bauxite
+                    lead
+                    gasoline
+                    munitions
+                    steel
+                    aluminum
+                    food
+                    credits
+                    population
+                    defensive_wars_count
+                    cities {{
+                        id
+                        name
+                        date
+                        infrastructure
+                        land
+                        coal_power
+                        oil_power
+                        nuclear_power
+                        wind_power
+                        farm
+                        uranium_mine
+                        iron_mine
+                        coal_mine
+                        oil_refinery
+                        steel_mill
+                        aluminum_refinery
+                        munitions_factory
+                        police_station
+                        hospital
+                        recycling_center
+                        subway
+                        supermarket
+                        bank
+                        shopping_mall
+                        stadium
+                        barracks
+                        factory
+                        hangar
+                        drydock
+                    }}
+                    defensive_wars {{
+                        id
+                        attacker {{
+                            id
+                            nation_name
+                            leader_name
+                        }}
+                        defender {{
+                            id
+                            nation_name
+                            leader_name
+                        }}
+                        war_type
+                        reason
+                        turns_left
+                        groundcontrol
+                        airsuperiority
+                        navalblockade
+                        att_resistance
+                        def_resistance
+                        att_fortify
+                        def_fortify
+                    }}
+                    offensive_wars {{
+                        id
+                        attacker {{
+                            id
+                            nation_name
+                            leader_name
+                        }}
+                        defender {{
+                            id
+                            nation_name
+                            leader_name
+                        }}
+                        war_type
+                        reason
+                        turns_left
+                        groundcontrol
+                        airsuperiority
+                        navalblockade
+                        att_resistance
+                        def_resistance
+                        att_fortify
+                        def_fortify
+                    }}
+                }}
+            }}
+        }}"""
+        
+        response = await self._make_graphql_request(query, scope=scope)
+        if response and response.get("data", {}).get("nations", {}).get("data"):
+            nations_data = response["data"]["nations"]["data"]
+            
+            # Organize by nation ID
+            result = {}
+            for nation in nations_data:
+                nation_id = nation.get('id')
+                if nation_id:
+                    result[nation_id] = nation
+            
+            logger.info(f"🌐 Retrieved detailed data for {len(result)} nations")
+            return result
+        else:
+            logger.warning(f"🌐 No nations data found for IDs: {nation_ids}")
+            if response:
+                logger.warning(f"🌐 Response structure: {list(response.keys()) if isinstance(response, dict) else type(response)}")
+                if response.get("errors"):
+                    logger.error(f"🌐 GraphQL errors: {response['errors']}")
+            return {}
+    
     async def get_alliance_data(self, alliance_id: int, scope: str = "alliance_scope") -> Optional[Dict]:
         """Get alliance data by ID."""
         query = """
@@ -251,6 +431,8 @@ class PoliticsWarAPI:
         response = await self._make_graphql_request(query, scope=scope)
         if response and response.get("data", {}).get("alliances", {}).get("data"):
             return response["data"]["alliances"]["data"][0]
+        else:
+            logger.warning(f"Alliance data not found for ID {alliance_id}. Response: {response}")
         return None
     
     async def get_alliance_members(self, alliance_id: int, scope: str = "alliance_scope") -> Optional[List[Dict]]:

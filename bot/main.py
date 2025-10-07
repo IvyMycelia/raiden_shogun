@@ -161,13 +161,20 @@ async def load_cogs():
         'cogs.nation.wars',
         'cogs.nation.intel',
         'cogs.nation.purge',
-        'cogs.alliance.audit',
+        'cogs.nation.projects',
+        'cogs.audit.main',
+        'cogs.audit.activity',
+        'cogs.audit.warchest',
+        'cogs.audit.spies',
+        'cogs.audit.bloc',
+        'cogs.audit.military',
         'cogs.alliance.management',
         'cogs.war.detection',
         'cogs.war.analysis',
         'cogs.utility.help',
         'cogs.utility.feedback',
-        'cogs.utility.admin'
+        'cogs.utility.admin',
+        'cogs.utility.market'
     ]
     
     # First, unload any existing cogs to avoid conflicts

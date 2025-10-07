@@ -100,12 +100,17 @@ The Raiden Shogun Discord bot is a comprehensive Politics and War (PnW) manageme
 - **Output**: Current vs Required spy count
 
 **4. Projects Audit (`projects`)**
-- **Threshold**: Minimum 10 projects
-- **Data Source**: `member.projects` (integer)
+- **Purpose**: Check raiders (C15 and below) for project compliance when timer is up
+- **Timer Check**: 120 turns (10 days) since last project
+- **Required Projects**: Activity Center, Propaganda Bureau, Intelligence Agency, Research & Development, Pirate Economy, Advanced Pirate Economy
+- **Data Sources**: 
+  - `turns_since_last_project` (timer check)
+  - `project_bits` (owned projects via bit decoding)
 - **Edge Cases**:
-  - Missing projects field → Defaults to 0
-  - Invalid type → Error logged
-- **Output**: Current project count
+  - Timer not up → No violation
+  - Missing project data → Assumes no projects owned
+  - Invalid project bits → Error logged
+- **Output**: Raiders with timer up who are missing required projects
 
 **5. Color Bloc Audit (`bloc`)**
 - **Logic**: Members must match alliance color (exclude beige)

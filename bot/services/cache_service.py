@@ -166,7 +166,8 @@ class CacheService:
         registrations = self.load_registrations()
         registrations[discord_id] = {
             'nation_id': nation_id,
-            'discord_name': discord_name,
+            'discord_name': discord_name,  # Keep for compatibility
+            'discord_username': discord_name,  # Exact username
             'nation_name': nation_name,
             'registered_at': datetime.now(timezone.utc).isoformat()
         }
@@ -177,5 +178,6 @@ class CacheService:
         registrations = self.load_registrations()
         for discord_id, data in registrations.items():
             if str(data.get('nation_id')) == str(nation_id):
-                return data.get('discord_name', 'N/A')
+                # Prefer discord_username (exact username) over discord_name (display name)
+                return data.get('discord_username', data.get('discord_name', 'N/A'))
         return 'N/A'

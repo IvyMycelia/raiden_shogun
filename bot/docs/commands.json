@@ -58,16 +58,16 @@
     },
     {
       "name": "who",
-      "aliases": ["who", "info", "nation", "profile"],
-      "description": "Get detailed information about a nation",
-      "usage": "`/who [nation_id]` or `!who [nation_id]`",
+      "aliases": ["who", "search", "find"],
+      "description": "Search for registered nations by name or Discord username",
+      "usage": "`!who <search_term>`",
       "category": "nation",
-      "keywords": ["who", "info", "nation", "profile", "details", "information"],
-      "details": "Shows comprehensive information about a nation including basic stats, military, economy, and Discord information if available.",
+      "keywords": ["who", "search", "find", "lookup", "nation", "discord"],
+      "details": "Searches through registered nations to find matches by nation name, Discord display name, or exact Discord username. Useful for finding specific players or nations.",
       "examples": [
-        "`/who` - Show info for your registered nation",
-        "`/who 590508` - Show info for nation ID 590508",
-        "`!who` - Show info using prefix command"
+        "`!who Rishi` - Search for nations with 'Rishi' in the name",
+        "`!who Ivy` - Search for Discord username 'Ivy'",
+        "`!who trendy` - Search for Discord username 'trendybananayt'"
       ]
     },
     {
@@ -151,19 +151,6 @@
       "examples": [
         "`/chest` - Show resources for your registered nation",
         "`/chest 590508` - Show resources for nation ID 590508"
-      ]
-    },
-    {
-      "name": "w",
-      "aliases": ["w", "search", "find"],
-      "description": "Search for registered nations by name or Discord username",
-      "usage": "`!w <search_term>`",
-      "category": "nation",
-      "keywords": ["w", "search", "find", "lookup", "nation", "discord"],
-      "details": "Searches through registered nations to find matches by nation name or Discord username. Useful for finding specific players or nations.",
-      "examples": [
-        "`!w Rishi` - Search for nations with 'Rishi' in the name",
-        "`!w Ivy` - Search for Discord username 'Ivy'"
       ]
     },
     {
@@ -281,6 +268,23 @@
       "details": "Clears stored war data and resets war tracking systems. Useful for maintenance and data management.",
       "examples": [
         "`!clearwars` - Clear all war data"
+      ]
+    },
+    {
+      "name": "market",
+      "aliases": ["market", "m", "price", "prices", "cost"],
+      "description": "Get current market prices for resources or calculate costs",
+      "usage": "`/market [resource]` or `!market [resource]` or `!market cost <quantities>`",
+      "category": "utility",
+      "keywords": ["market", "price", "prices", "cost", "resources", "coal", "oil", "uranium", "iron", "bauxite", "lead", "gasoline", "munitions", "steel", "aluminum", "food", "credits", "calculate", "total"],
+      "details": "Shows current market prices for resources from the Politics & War trade market. Can show all resources, a specific one, or calculate total costs for specified quantities. Supports abbreviations (c for coal, u for uranium, etc.) and full names. Use 'cost' with quantities like 'aluminum:50 u:100' to calculate total costs.",
+      "examples": [
+        "`/market` - Show all resource prices",
+        "`/market coal` - Show coal price only",
+        "`!market u` - Show uranium price (abbreviation)",
+        "`!market cost aluminum:50 u:100` - Calculate cost for 50 aluminum and 100 uranium",
+        "`!market cost` - Show all unit prices",
+        "`/market` with quantities - Calculate costs using slash command"
       ]
     },
     {

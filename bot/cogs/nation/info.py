@@ -212,40 +212,9 @@ class NationInfoCog(commands.Cog):
     
     # Traditional ! prefix commands
     @commands.command(name="who")
-    async def who_prefix(self, ctx, nation_id: Optional[int] = None):
-        """Show basic nation information."""
-        logger.info(f"Prefix command !who called by {ctx.author.name} (ID: {ctx.author.id})")
-        await self.who_logic(None, nation_id, ctx=ctx)
-
-    @commands.command(name="nw", aliases=["chest"])
-    async def chest_prefix(self, ctx, nation_id: Optional[int] = None):
-        """Show nation's resource chest (networth)."""
-        logger.info(f"Prefix command !nw called by {ctx.author.name} (ID: {ctx.author.id})")
-        await self.chest_logic(None, nation_id, ctx=ctx)
-    
-    @app_commands.command(name="networth", description="Show a nation's resource chest (networth).")
-    @app_commands.describe(nation_id="Nation ID to check (optional if you're registered)")
-    async def networth_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
-        """Show a nation's resource chest (networth)."""
-        await self.chest_logic(interaction, nation_id)
-
-    @app_commands.command(name="warchest", description="Calculate a nation's warchest requirements (5 days of upkeep).")
-    @app_commands.describe(nation_id="Nation ID for which to calculate the warchest (optional if you're registered)")
-    async def warchest_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
-        """Calculate a nation's warchest requirements (5 days of upkeep)."""
-        await self.warchest_logic(interaction, nation_id)
-    
-    @commands.command(name="wc", aliases=["warchest"])
-    async def warchest_prefix(self, ctx, nation_id: Optional[int] = None):
-        """Calculate a nation's warchest requirements (5 days of upkeep)."""
-        logger.info(f"Prefix command !wc called by {ctx.author.name} (ID: {ctx.author.id})")
-        await self.warchest_logic(None, nation_id, ctx=ctx)
-    
-    
-    @commands.command(name="w")
-    async def who_search_prefix(self, ctx, *, search_term: str = None):
+    async def who_prefix(self, ctx, *, search_term: str = None):
         """Search for registered nations by nation name or discord username."""
-        logger.info(f"Prefix command !w called by {ctx.author.name} (ID: {ctx.author.id}) with search term: {search_term}")
+        logger.info(f"Prefix command !who called by {ctx.author.name} (ID: {ctx.author.id}) with search term: {search_term}")
         
         try:
             # Load registrations
@@ -263,7 +232,7 @@ class NationInfoCog(commands.Cog):
                 await ctx.send(
                     embed=create_embed(
                         title=":warning: No Search Term",
-                        description="Please provide a search term (nation name or discord username).\nExample: `!w tre` or `!w Naturumgibt`",
+                        description="Please provide a search term (nation name or discord username).\nExample: `!who tre` or `!who Naturumgibt`",
                         color=discord.Color.orange()
                     )
                 )
@@ -276,12 +245,15 @@ class NationInfoCog(commands.Cog):
             for discord_id, reg_data in registrations.items():
                 nation_name = reg_data.get('nation_name', '').lower()
                 discord_name = reg_data.get('discord_name', '').lower()
+                discord_username = reg_data.get('discord_username', '').lower()
                 
-                # Check if search term matches nation name or discord name
+                # Check if search term matches nation name, discord display name, or exact username
                 if (search_term_lower in nation_name or 
                     search_term_lower in discord_name or
+                    search_term_lower in discord_username or
                     nation_name.startswith(search_term_lower) or
-                    discord_name.startswith(search_term_lower)):
+                    discord_name.startswith(search_term_lower) or
+                    discord_username.startswith(search_term_lower)):
                     
                     matches.append({
                         'discord_id': discord_id,
@@ -340,6 +312,21 @@ class NationInfoCog(commands.Cog):
                     color=discord.Color.red()
                 )
             )
+
+    @commands.command(name="nw", aliases=["chest"])
+    async def chest_prefix(self, ctx, nation_id: Optional[int] = None):
+        """Show nation's resource chest (networth)."""
+        logger.info(f"Prefix command !nw called by {ctx.author.name} (ID: {ctx.author.id})")
+        await self.chest_logic(None, nation_id, ctx=ctx)
+    
+    @app_commands.command(name="networth", description="Show a nation's resource chest (networth).")
+    @app_commands.describe(nation_id="Nation ID to check (optional if you're registered)")
+    async def networth_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
+        """Show a nation's resource chest (networth)."""
+        await self.chest_logic(interaction, nation_id)
+
+    
+    
     
     async def chest_logic(self, interaction, nation_id: Optional[int] = None, ctx=None):
         """Show nation's resource chest (networth)."""
@@ -498,8 +485,18 @@ class NationInfoCog(commands.Cog):
             
             logger.info(f"Starting Warchest Calculation For: {nation.name} || https://politicsandwar.com/nation/id={nation_id} || By {interaction.user if interaction else ctx.author} In {interaction.channel if interaction else ctx.channel}")
             
-            # Calculate warchest using the service
-            result, excess, supply = self.warchest_service.calculate_warchest(nation.__dict__)
+            # Calculate warchest using the service with raw API data
+            # Get the raw nation data from the API instead of using the Nation object
+            raw_nation_data = await self.nation_service.api.get_nation_data(nation_id, "everything_scope")
+            if not raw_nation_data:
+                if interaction:
+                    await interaction.response.send_message("❌ Could not fetch nation data for warchest calculation.", ephemeral=True)
+                    interaction_responded = True
+                else:
+                    await ctx.send("❌ Could not fetch nation data for warchest calculation.")
+                return
+            
+            result, excess, supply = self.warchest_service.calculate_warchest(raw_nation_data)
                 
             if result is None:
                 logger.error(f"Error calculating warchest for nation ID {nation_id}")
@@ -510,7 +507,24 @@ class NationInfoCog(commands.Cog):
                     await ctx.send("Error calculating warchest. Please check the nation ID.")
                 return
             
-            # Format the required resources text with emojis
+            # Get current resources from the nation object
+            current_resources = {
+                'money': nation.money,
+                'coal': nation.coal,
+                'oil': nation.oil,
+                'uranium': nation.uranium,
+                'iron': nation.iron,
+                'bauxite': nation.bauxite,
+                'lead': nation.lead,
+                'gasoline': nation.gasoline,
+                'munitions': nation.munitions,
+                'steel': nation.steel,
+                'aluminum': nation.aluminum,
+                'food': nation.food,
+                'credits': nation.credits
+            }
+            
+            # Format the resources showing deficits (what you actually need to get)
             txt = f"""
 <:money:1357103044466184412> {format_number(result['money_deficit'])}
 <:coal:1357102730682040410>  {format_number(result['coal_deficit'])}
@@ -577,206 +591,6 @@ class NationInfoCog(commands.Cog):
             elif not interaction:
                 await ctx.send(msg)
     
-    @app_commands.command(name="spies", description="Check a nation's spy information and CIA project status")
-    @app_commands.describe(nation_id="Nation ID to check (uses registered nation if not provided)")
-    async def spies_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
-        """Show spy information for a nation."""
-        await interaction.response.defer()
-        
-        try:
-            # Get nation ID
-            if nation_id is None:
-                user_id = str(interaction.user.id)
-                nation_id = self.cache_service.get_user_nation(user_id)
-                if not nation_id:
-                    await interaction.followup.send("❌ You need to register your nation first! Use `/register` command.", ephemeral=True)
-                    return
-            
-            # Get nation data
-            nation = await self.nation_service.get_nation(nation_id, "everything_scope")
-            if not nation:
-                await interaction.followup.send("❌ Could not find nation data.", ephemeral=True)
-                return
-            
-            # Load yesterday's nations data for comparison
-            from services.raid_cache_service import RaidCacheService
-            raid_cache = RaidCacheService()
-            yesterday_nations = raid_cache.load_yesterday_nations_cache()
-            
-            # Get spy information
-            current_spies = nation.spies
-            yesterday_spies = 0
-            
-            # Get yesterday's spy count if available
-            if yesterday_nations and str(nation_id) in yesterday_nations:
-                yesterday_spies = yesterday_nations[str(nation_id)].get('spies', 0)
-            
-            # Determine spy change
-            spy_change = current_spies - yesterday_spies
-            if spy_change > 0:
-                spy_status = f"✓ Bought {spy_change} spy{'s' if spy_change > 1 else ''}"
-            elif spy_change < 0:
-                spy_status = f"X Lost {abs(spy_change)} spy{'s' if abs(spy_change) > 1 else ''}"
-            else:
-                spy_status = "- No change"
-            
-            # Check CIA project and requirements
-            has_cia = nation.central_intelligence_agency
-            max_spies = 3 if has_cia else 2
-            required_spies = 0 if current_spies >= max_spies else max_spies
-            spy_compliance = "✓ Compliant" if current_spies >= max_spies else "X Non-compliant"
-            
-            # Create compact embed
-            embed = discord.Embed(
-                title=f"Spy Intelligence - {nation.name}",
-                color=discord.Color.green() if current_spies >= max_spies else discord.Color.red(),
-                timestamp=datetime.now(timezone.utc)
-            )
-            
-            # Add compact fields
-            embed.add_field(
-                name="Current Status",
-                value=f"**Spies:** {current_spies:,}\n**Required:** {required_spies}\n**Status:** {spy_compliance}",
-                inline=True
-            )
-            
-            embed.add_field(
-                name="CIA Project",
-                value=f"**Has CIA:** {'Yes' if has_cia else 'No'}",
-                inline=True
-            )
-            
-            embed.add_field(
-                name="Recent Activity",
-                value=f"**Yesterday:** {yesterday_spies:,}\n**Change:** {spy_status}",
-                inline=True
-            )
-            
-            # Add nation link
-            nation_url = f"https://politicsandwar.com/nation/id={nation_id}"
-            embed.add_field(
-                name="Nation",
-                value=f"[{nation.name}]({nation_url})",
-                inline=False
-            )
-            
-            embed.set_footer(text="Data from Politics and War API")
-            
-            await interaction.followup.send(embed=embed)
-            
-        except Exception as e:
-            tb = traceback.extract_tb(e.__traceback__)
-            file_name = tb[-1].filename.split('/')[-1] if tb else "unknown"
-            line_num = tb[-1].lineno if tb else 0
-            logger.error(f"Error in spies command: {e} (File: {file_name}, Line: {line_num})")
-            msg = (
-                ":warning: An Error Occurred\n"
-                f"**An unexpected error occurred while processing the command.**\n\n"
-                f"**Error Type:** `{type(e).__name__}`\n"
-                f"**Error Message:** {e}\n\n"
-                f"Detailed error information has been logged internally. Please contact <@860564164828725299> if this issue persists."
-            )
-            await interaction.followup.send(msg, ephemeral=True)
-    
-    @commands.command(name="spies")
-    async def spies_prefix(self, ctx, nation_id: Optional[int] = None):
-        """Show spy information for a nation."""
-        logger.info(f"Prefix command !spies called by {ctx.author.name} (ID: {ctx.author.id})")
-        
-        try:
-            # Get nation ID
-            if nation_id is None:
-                user_id = str(ctx.author.id)
-                nation_id = self.cache_service.get_user_nation(user_id)
-                if not nation_id:
-                    await ctx.send("❌ You need to register your nation first! Use `/register` command.")
-                    return
-            
-            # Get nation data
-            nation = await self.nation_service.get_nation(nation_id, "everything_scope")
-            if not nation:
-                await ctx.send("❌ Could not find nation data.")
-                return
-            
-            # Load yesterday's nations data for comparison
-            from services.raid_cache_service import RaidCacheService
-            raid_cache = RaidCacheService()
-            yesterday_nations = raid_cache.load_yesterday_nations_cache()
-            
-            # Get spy information
-            current_spies = nation.spies
-            yesterday_spies = 0
-            
-            # Get yesterday's spy count if available
-            if yesterday_nations and str(nation_id) in yesterday_nations:
-                yesterday_spies = yesterday_nations[str(nation_id)].get('spies', 0)
-            
-            # Determine spy change
-            spy_change = current_spies - yesterday_spies
-            if spy_change > 0:
-                spy_status = f"✓ Bought {spy_change} spy{'s' if spy_change > 1 else ''}"
-            elif spy_change < 0:
-                spy_status = f"X Lost {abs(spy_change)} spy{'s' if abs(spy_change) > 1 else ''}"
-            else:
-                spy_status = "- No change"
-            
-            # Check CIA project and requirements
-            has_cia = nation.central_intelligence_agency
-            max_spies = 3 if has_cia else 2
-            required_spies = 0 if current_spies >= max_spies else max_spies
-            spy_compliance = "✓ Compliant" if current_spies >= max_spies else "X Non-compliant"
-            
-            # Create compact embed
-            embed = discord.Embed(
-                title=f"Spy Intelligence - {nation.name}",
-                color=discord.Color.green() if current_spies >= max_spies else discord.Color.red(),
-                timestamp=datetime.now(timezone.utc)
-            )
-            
-            # Add compact fields
-            embed.add_field(
-                name="Current Status",
-                value=f"**Spies:** {current_spies:,}\n**Required:** {required_spies}\n**Status:** {spy_compliance}",
-                inline=True
-            )
-            
-            embed.add_field(
-                name="CIA Project",
-                value=f"**Has CIA:** {'Yes' if has_cia else 'No'}",
-                inline=True
-            )
-            
-            embed.add_field(
-                name="Recent Activity",
-                value=f"**Yesterday:** {yesterday_spies:,}\n**Change:** {spy_status}",
-                inline=True
-            )
-            
-            # Add nation link
-            nation_url = f"https://politicsandwar.com/nation/id={nation_id}"
-            embed.add_field(
-                name="Nation",
-                value=f"[{nation.name}]({nation_url})",
-                inline=False
-            )
-            
-            embed.set_footer(text="Data from Politics and War API")
-            
-            await ctx.send(embed=embed)
-            
-        except Exception as e:
-            tb = traceback.extract_tb(e.__traceback__)
-            file_name = tb[-1].filename.split('/')[-1] if tb else "unknown"
-            line_num = tb[-1].lineno if tb else 0
-            logger.error(f"Error in spies command: {e} (File: {file_name}, Line: {line_num})")
-            msg = (
-                ":warning: An Error Occurred\n"
-                f"**An unexpected error occurred while processing the command.**\n\n"
-                f"**Error Type:** `{type(e).__name__}`\n"
-                f"**Error Message:** {e}\n\n"
-                f"Detailed error information has been logged internally. Please contact <@860564164828725299> if this issue persists."
-            )
-            await ctx.send(msg)
 
 async def setup(bot: commands.Bot):
     """Setup the cog."""

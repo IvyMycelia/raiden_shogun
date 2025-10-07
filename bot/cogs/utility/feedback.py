@@ -45,7 +45,7 @@ class FeedbackCog(commands.Cog):
             
             # Register user
             user_id = str(interaction.user.id)
-            discord_name = interaction.user.display_name
+            discord_name = interaction.user.name  # Use exact username instead of display name
             nation_name = nation.name
             
             self.cache_service.register_user(user_id, nation_id, discord_name, nation_name)

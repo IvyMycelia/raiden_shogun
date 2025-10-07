@@ -1,5 +1,24 @@
+A National Project (often shortened to just a Project) is a massive nation improvement with huge costs and benefits. In total, there are 39 Projects that, depending on their nature, can boost your nation's military, production or income.
+
+Each National Project needs a National Project slot to be built. Each nation has 1 free project slot. Every 4,000 infrastructure nationwide unlocks an additional slot, in the same way that every 50 infrastructure in a city unlocks an improvement slot, for example, nations need to have 4k infrastructure to build your second project, 8k infrastructure to build your third project etc. Nations which have a total of 100 wars won/lost (combined) get 1 more project slot.
+
+Projects will remain intact even if the infrastructure that was necessary to build them was lost, for example, once total infrastructure nationally drops from 4k infrastructure to 3999 due to war, National Projects slots will get to 0, but any Project already built will not be destroyed.
+
+Some National Projects also have certain requirements. Usually this is another project but it can also be a certain number of cities or, in one case, a number of wars won or lost (combined).
+
+Once built, a National Project can be destroyed but no money nor resources are refunded.
+
+A new National Project can only be built every 120 turns (10 days), unless the Project Timer is reset by redeeming 1 Credit at the "Donate" page.
+
+With the Technological Advancement Domestic Policy there is a 5% discount on National Project costs (5% in both required Cash and Resources). 
+
 Improvements & Details
 City Details
+This formula is cubic.
+
+Next City Cost = 50000*(X-1)^3 + 150000*X + 75000
+
+    Where X is the current number of cities.
 Base Population = Infrastructure * 100
 Infra Unit Cost = [((Current Infra-10)^2.2) / 710] + 300
 Improvements = Infra/50

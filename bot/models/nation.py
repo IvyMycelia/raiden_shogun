@@ -115,6 +115,10 @@ class Nation:
     missiles: int
     nukes: int
     projects: int
+    project_bits: str
+    turns_since_last_project: int
+    wars_won: int
+    wars_lost: int
     central_intelligence_agency: bool
     vmode: bool
     beige_turns: int
@@ -187,6 +191,10 @@ class Nation:
             missiles=int(data.get('missiles', 0)),
             nukes=int(data.get('nukes', 0)),
             projects=int(data.get('projects', 0)),
+            project_bits=str(data.get('project_bits', '')),
+            turns_since_last_project=int(data.get('turns_since_last_project', 0)),
+            wars_won=int(data.get('wars_won', 0)),
+            wars_lost=int(data.get('wars_lost', 0)),
             central_intelligence_agency=bool(data.get('central_intelligence_agency', False)),
             vmode=bool(data.get('vmode', 0)),
             beige_turns=int(data.get('beige_turns', 0)),
