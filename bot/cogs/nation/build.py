@@ -121,7 +121,7 @@ class BuildCog(commands.Cog):
             build["imp_hangars"] = min(hangars, 5)
             build["imp_drydock"] = min(drydocks, 3)
         
-        # STEP 3: RESOURCE PRODUCTION FOR SELF-SUFFICIENCY
+        # STEP 3: MINIMAL RESOURCE PRODUCTION (Only what's absolutely needed)
         # Calculate resource needs based on power and military
         uranium_needed = 0
         iron_needed = 0
@@ -135,7 +135,7 @@ class BuildCog(commands.Cog):
             # Nuclear: 2.4 uranium per 1000 infra per plant
             uranium_needed = build["imp_nuclearpower"] * (infra_needed / 1000) * 2.4
         
-        # Military resource needs
+        # Military resource needs (only if actually needed)
         if build["imp_factory"] > 0:
             # Steel mills need iron and coal: 3 iron + 3 coal = 9 steel
             iron_needed = build["imp_factory"] * 3  # Per day
@@ -153,7 +153,7 @@ class BuildCog(commands.Cog):
             # Munitions factories need lead: 6 lead = 18 munitions
             lead_needed = build["imp_factory"] * 6
         
-        # Calculate resource production needed
+        # Calculate MINIMAL resource production needed
         # Each mine produces 3 tons per day (0.25 per turn)
         if uranium_needed > 0:
             build["imp_uramine"] = min(max(1, int(uranium_needed / 3)), 5)
@@ -184,60 +184,35 @@ class BuildCog(commands.Cog):
         if build["imp_barracks"] > 0 or build["imp_factory"] > 0:
             build["imp_gasrefinery"] = min(max(build["imp_barracks"], build["imp_factory"]), 5)
         
-        # STEP 5: FOOD PRODUCTION
+        # STEP 5: FOOD PRODUCTION (Minimal)
         # Base food production: Farm Count * (Land Area / 500)
         # With Mass Irrigation: Farm Count * (Land Area / 400)
         base_food_per_farm = land / 500
         if "mass_irrigation" in projects:
             base_food_per_farm = land / 400
         
-        # Estimate food needed (rough calculation)
+        # Minimal food production (just enough to survive)
         population = infra_needed * 100  # Base Population = Infrastructure * 100
         food_needed = population / 1000  # Rough estimate
-        farms_needed = int(food_needed / base_food_per_farm) + 1
-        build["imp_farm"] = min(farms_needed, 20)
+        farms_needed = max(1, int(food_needed / base_food_per_farm))
+        build["imp_farm"] = min(farms_needed, 5)  # Cap at 5 farms
         
-        # STEP 6: CIVIL IMPROVEMENTS (Crime and Disease Control)
-        # Calculate base population for crime/disease calculations
-        base_population = infra_needed * 100
+        # STEP 6: CIVIL IMPROVEMENTS (Minimal Crime and Disease Control)
+        # Minimal civil improvements to save slots for commerce
         
-        # Crime control: Police Stations reduce crime by 2.5% each
-        # Crime (%) = ((103 - Commerce)^2 + (Infrastructure * 100))/(111111) - Police Modifier
-        # Target: Crime < 1%
-        commerce_rate = 100  # Will be calculated with commerce improvements
-        base_crime = ((103 - commerce_rate) ** 2 + (infra_needed * 100)) / 111111
-        police_needed = max(0, int((base_crime - 1) / 0.025) + 1)
-        build["imp_policestation"] = min(police_needed, 5)
+        # Basic crime control: 1-2 police stations
+        build["imp_policestation"] = min(2, 5)
         
-        # Disease control: Hospitals reduce disease by 2.5% each
-        # Disease Rate = (((Population Density^2) * 0.01) - 25)/100) + (Base Population/100000) + Pollution Modifier - Hospital Modifier
-        # Target: Disease < 1%
-        pop_density = base_population / land if land > 0 else 0
-        base_disease = (((pop_density ** 2) * 0.01) - 25) / 100 + (base_population / 100000)
-        hospital_needed = max(0, int((base_disease - 1) / 0.025) + 1)
-        build["imp_hospital"] = min(hospital_needed, 5)
+        # Basic disease control: 1-2 hospitals
+        build["imp_hospital"] = min(2, 5)
         
-        # Pollution control: Recycling Centers reduce pollution by 70 each
-        # Calculate total pollution from improvements
-        total_pollution = 0
-        total_pollution += build["imp_coalmine"] * 12
-        total_pollution += build["imp_ironmine"] * 12
-        total_pollution += build["imp_uramine"] * 20
-        total_pollution += build["imp_farm"] * 2
-        total_pollution += build["imp_steelmill"] * 40
-        total_pollution += build["imp_aluminumrefinery"] * 40
-        total_pollution += build["imp_munitionsfactory"] * 32
-        total_pollution += build["imp_gasrefinery"] * 32
-        total_pollution += build["imp_policestation"] * 1
-        total_pollution += build["imp_hospital"] * 4
-        
-        recycling_needed = max(0, int(total_pollution / 70) + 1)
-        build["imp_recyclingcenter"] = min(recycling_needed, 3)
+        # Basic pollution control: 1 recycling center
+        build["imp_recyclingcenter"] = min(1, 3)
         
         # Subway: +8% commerce, -45 pollution
         build["imp_subway"] = 1  # Always build 1 subway
         
-        # STEP 7: COMMERCE IMPROVEMENTS (Income Optimization)
+        # STEP 7: COMMERCE IMPROVEMENTS (Income Optimization - PRIORITY)
         # Calculate remaining improvement slots
         used_improvements = (
             build["imp_nuclearpower"] + build["imp_windpower"] +
@@ -252,24 +227,59 @@ class BuildCog(commands.Cog):
         
         remaining_slots = max(0, imp_total - used_improvements)
         
-        # Allocate commerce improvements based on MMR type
+        # PRIORITIZE COMMERCE OVER RESOURCE PRODUCTION
+        # Allocate commerce improvements first (highest income impact)
         if mmr_type == "whale":
-            # Whale: Focus on commerce
-            banks = min(remaining_slots // 3, 5)
-            malls = min((remaining_slots - banks) // 3, 4)
-            stadiums = min((remaining_slots - banks - malls) // 4, 3)
-            supermarkets = min(max(0, remaining_slots - banks - malls - stadiums), 4)
+            # Whale: Maximum commerce focus
+            build["imp_bank"] = min(remaining_slots // 2, 5)
+            remaining_slots -= build["imp_bank"]
             
-            build["imp_bank"] = banks
-            build["imp_mall"] = malls
-            build["imp_stadium"] = stadiums
-            build["imp_supermarket"] = supermarkets
+            build["imp_mall"] = min(remaining_slots // 2, 4)
+            remaining_slots -= build["imp_mall"]
+            
+            build["imp_stadium"] = min(remaining_slots // 3, 3)
+            remaining_slots -= build["imp_stadium"]
+            
+            build["imp_supermarket"] = min(remaining_slots, 4)
         else:
-            # Raider: Minimal commerce, focus on military
-            build["imp_bank"] = min(remaining_slots // 4, 2)
-            build["imp_mall"] = min(max(0, (remaining_slots - build["imp_bank"]) // 4), 2)
-            build["imp_stadium"] = 0
-            build["imp_supermarket"] = 0
+            # Raider: Still prioritize commerce for income
+            build["imp_bank"] = min(remaining_slots // 2, 5)
+            remaining_slots -= build["imp_bank"]
+            
+            build["imp_mall"] = min(remaining_slots // 2, 4)
+            remaining_slots -= build["imp_mall"]
+            
+            build["imp_stadium"] = min(remaining_slots // 3, 3)
+            remaining_slots -= build["imp_stadium"]
+            
+            build["imp_supermarket"] = min(remaining_slots, 4)
+        
+        # STEP 8: OPTIMIZE RESOURCE PRODUCTION (Only if slots remain)
+        # Check if we have remaining slots after commerce allocation
+        final_used_improvements = (
+            build["imp_nuclearpower"] + build["imp_windpower"] +
+            build["imp_uramine"] + build["imp_ironmine"] + build["imp_bauxitemine"] +
+            build["imp_leadmine"] + build["imp_coalmine"] + build["imp_oilwell"] +
+            build["imp_farm"] + build["imp_steelmill"] + build["imp_aluminumrefinery"] +
+            build["imp_munitionsfactory"] + build["imp_gasrefinery"] +
+            build["imp_policestation"] + build["imp_hospital"] + build["imp_recyclingcenter"] +
+            build["imp_subway"] + build["imp_barracks"] + build["imp_factory"] +
+            build["imp_hangars"] + build["imp_drydock"] + build["imp_bank"] + 
+            build["imp_mall"] + build["imp_stadium"] + build["imp_supermarket"]
+        )
+        
+        final_remaining_slots = max(0, imp_total - final_used_improvements)
+        
+        # Only add extra resource production if we have slots left
+        if final_remaining_slots > 0:
+            # Add extra resource production for income
+            if final_remaining_slots >= 1:
+                build["imp_bauxitemine"] = min(build["imp_bauxitemine"] + 1, 10)
+                final_remaining_slots -= 1
+            
+            if final_remaining_slots >= 1:
+                build["imp_oilwell"] = min(build["imp_oilwell"] + 1, 10)
+                final_remaining_slots -= 1
         
         # Project bonuses
         if "international_trade_center" in projects:
