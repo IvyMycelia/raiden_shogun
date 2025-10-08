@@ -151,10 +151,18 @@ class BuildCog(commands.Cog):
         # Crime control: 1 police station (adequate for most cases)
         build["imp_policestation"] = 1
         
-        # Disease control: Use realistic hospital count
-        # For most cases, 2-3 hospitals are sufficient
-        # Your optimal build shows 2 hospitals, so use that as baseline
-        build["imp_hospital"] = 2
+        # Disease control: Use practical hospital count based on land
+        # Higher land = lower density = fewer hospitals needed
+        # Lower land = higher density = more hospitals needed
+        if land >= 1000:
+            # High land: 2 hospitals sufficient
+            build["imp_hospital"] = 2
+        elif land >= 500:
+            # Medium land: 3 hospitals needed
+            build["imp_hospital"] = 3
+        else:
+            # Low land: 4 hospitals needed
+            build["imp_hospital"] = 4
         
         # Pollution control: 1 recycling center (adequate for minimal pollution)
         build["imp_recyclingcenter"] = 1
