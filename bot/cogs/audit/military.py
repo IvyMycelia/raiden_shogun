@@ -60,6 +60,15 @@ async def run_military_audit(interaction: discord.Interaction, alliance_service,
         nation_ids = [str(member.get("id", 0)) for member in filtered_members]
         nations_data = await nation_service.api.get_nations_batch_data(nation_ids, "everything_scope")
         
+        # Load yesterday's CSV data for military comparison
+        yesterday_data = None
+        try:
+            from services.raid_cache_service import RaidCacheService
+            async with RaidCacheService() as raid_cache:
+                yesterday_data = raid_cache.load_yesterday_nations_cache()
+        except Exception as e:
+            logger.warning(f"Could not load yesterday's data for military audit: {e}")
+        
         violations = []
         violators = []
         
@@ -69,7 +78,7 @@ async def run_military_audit(interaction: discord.Interaction, alliance_service,
                 continue
             
             nation_data = nations_data[nation_id]
-            violation = await check_military_compliance(member, nation_data, cache_service)
+            violation = await check_military_compliance(member, nation_data, cache_service, yesterday_data)
             if violation:
                 violations.append(violation)
                 discord_username = get_discord_username_with_fallback(member, cache_service)
@@ -92,13 +101,13 @@ async def run_military_audit(interaction: discord.Interaction, alliance_service,
         # Send summary with violators in codeblock
         if violators:
             violators_text = " ".join(violators)
-            await interaction.followup.send(f"```The Following People Need To Build Military: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Buy Their Military\n{violators_text}```")
             
     except Exception as e:
         logger.error(f"Error in military audit: {e}")
         await interaction.followup.send("Error running military audit.", ephemeral=True)
 
-async def check_military_compliance(member: Dict, nation_data: Dict, cache_service) -> Optional[Dict]:
+async def check_military_compliance(member: Dict, nation_data: Dict, cache_service, yesterday_data: Dict = None) -> Optional[Dict]:
     """Check if a member meets military capacity requirements."""
     try:
         cities_data = nation_data.get("cities", [])
@@ -151,6 +160,23 @@ async def check_military_compliance(member: Dict, nation_data: Dict, cache_servi
         total_aircraft = nation_data.get("aircraft", 0)
         total_ships = nation_data.get("ships", 0)
         
+        # Check if they bought military units today by comparing with yesterday's data
+        if yesterday_data:
+            nation_id = str(member.get('id', ''))
+            yesterday_nation = yesterday_data.get(nation_id, {})
+            yesterday_soldiers = yesterday_nation.get('soldiers', 0)
+            yesterday_tanks = yesterday_nation.get('tanks', 0)
+            yesterday_aircraft = yesterday_nation.get('aircraft', 0)
+            yesterday_ships = yesterday_nation.get('ships', 0)
+            
+            # If they bought any military units today, exclude from violations
+            if (total_soldiers > yesterday_soldiers or 
+                total_tanks > yesterday_tanks or 
+                total_aircraft > yesterday_aircraft or 
+                total_ships > yesterday_ships):
+                logger.info(f"Nation {nation_id} bought military units today, excluding from violations")
+                return None
+        
         # Check usage percentage for each unit type
         violations = []
         threshold = 0.79  # 79%
@@ -199,10 +225,17 @@ def format_military_violation(violation: Dict) -> str:
     nation_url = f"https://politicsandwar.com/nation/id={member.get('id', '')}"
     discord_username = get_discord_username_with_fallback(member, cache_service)
     
+    # Get city count properly
+    cities = member.get('cities', 0)
+    if isinstance(cities, list):
+        city_count = len(cities)
+    else:
+        city_count = cities
+    
     return (
         f"**Leader:** [{member.get('leader_name', 'Unknown')}]({nation_url})\n"
         f"**Nation:** {member.get('nation_name', 'Unknown')}\n"
-        f"**Cities:** {member.get('cities', 0)}\n"
+        f"**Cities:** {city_count}\n"
         f"**Violations:** {', '.join(violations)}\n"
         f"**Discord:** {discord_username}"
     )

@@ -319,11 +319,23 @@ class NationInfoCog(commands.Cog):
         logger.info(f"Prefix command !nw called by {ctx.author.name} (ID: {ctx.author.id})")
         await self.chest_logic(None, nation_id, ctx=ctx)
     
+    @commands.command(name="wc", aliases=["warchest"])
+    async def warchest_prefix(self, ctx, nation_id: Optional[int] = None):
+        """Calculate warchest requirements for a nation."""
+        logger.info(f"Prefix command !wc called by {ctx.author.name} (ID: {ctx.author.id})")
+        await self.warchest_logic(None, nation_id, ctx=ctx)
+    
     @app_commands.command(name="networth", description="Show a nation's resource chest (networth).")
     @app_commands.describe(nation_id="Nation ID to check (optional if you're registered)")
     async def networth_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
         """Show a nation's resource chest (networth)."""
         await self.chest_logic(interaction, nation_id)
+    
+    @app_commands.command(name="warchest", description="Calculate a nation's warchest requirements (5 days of upkeep)")
+    @app_commands.describe(nation_id="Nation ID to calculate warchest for (optional if you're registered)")
+    async def warchest_slash(self, interaction: discord.Interaction, nation_id: Optional[int] = None):
+        """Calculate warchest requirements for a nation."""
+        await self.warchest_logic(interaction, nation_id)
 
     
     

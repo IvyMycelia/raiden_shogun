@@ -101,7 +101,7 @@ async def run_spies_audit(interaction: discord.Interaction, alliance_service, na
         # Send summary with violators in codeblock
         if violators:
             violators_text = " ".join(violators)
-            await interaction.followup.send(f"```The Following People Need To Buy Spies: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Buy Spies\n{violators_text}```")
             
     except Exception as e:
         logger.error(f"Error in spies audit: {e}")

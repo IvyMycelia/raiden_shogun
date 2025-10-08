@@ -422,7 +422,7 @@ class PoliticsWarAPI:
                     color
                     score
                     flag
-                    created
+                    date
                 }
             }
         }

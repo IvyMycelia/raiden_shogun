@@ -100,7 +100,7 @@ async def run_bloc_audit(interaction: discord.Interaction, alliance_service, nat
         # Send summary with violators in codeblock
         if violators:
             violators_text = " ".join(violators)
-            await interaction.followup.send(f"```The Following People Need To Change Color: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Change Color\n{violators_text}```")
             
     except Exception as e:
         logger.error(f"Error in bloc audit: {e}")

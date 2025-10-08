@@ -162,6 +162,7 @@ async def load_cogs():
         'cogs.nation.intel',
         'cogs.nation.purge',
         'cogs.nation.projects',
+        'cogs.nation.military',
         'cogs.audit.main',
         'cogs.audit.activity',
         'cogs.audit.warchest',

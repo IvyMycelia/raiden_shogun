@@ -16,6 +16,48 @@ logger = get_logger('warchest_service')
 class WarchestService:
     """Service for warchest calculations using simple city-based formula."""
     
+    def calculate_unit_purchase_costs(self, cities_data: List[Dict], nation_info: Dict) -> float:
+        """Calculate money required for 2 days of unit purchases based on improvements and military research."""
+        try:
+            # Check if nation has Propaganda Bureau project (10% bonus to recruitment)
+            has_propaganda_bureau = nation_info.get("propaganda_bureau", False)
+            recruitment_bonus = 1.1 if has_propaganda_bureau else 1.0
+            
+            total_cost = 0
+            
+            for city in cities_data:
+                if not isinstance(city, dict):
+                    continue
+                    
+                # Barracks: 1,000 soldiers per day per barracks (max 3,000 per barracks)
+                barracks = city.get("barracks", 0)
+                soldiers_per_day = min(barracks * 1000, barracks * 3000) * recruitment_bonus
+                soldier_cost = soldiers_per_day * 1.25  # $1.25 per soldier
+                
+                # Factories: 50 tanks per day per factory (max 250 per factory)
+                factories = city.get("factory", 0)
+                tanks_per_day = min(factories * 50, factories * 250) * recruitment_bonus
+                tank_cost = tanks_per_day * 50  # $50 per tank
+                
+                # Hangars: 3 aircraft per day per hangar (max 15 per hangar)
+                hangars = city.get("hangar", 0)
+                aircraft_per_day = min(hangars * 3, hangars * 15) * recruitment_bonus
+                aircraft_cost = aircraft_per_day * 500  # $500 per aircraft
+                
+                # Drydocks: 1 ship per day per drydock (max 5 per drydock)
+                drydocks = city.get("drydock", 0)
+                ships_per_day = min(drydocks * 1, drydocks * 5) * recruitment_bonus
+                ship_cost = ships_per_day * 3375  # $3,375 per ship
+                
+                # Add costs for this city
+                total_cost += (soldier_cost + tank_cost + aircraft_cost + ship_cost) * 2  # 2 days worth
+            
+            return total_cost
+            
+        except Exception as e:
+            logger.error(f"Error calculating unit purchase costs: {e}")
+            return 0
+    
     def calculate_warchest(self, nation_info: Dict[str, Any]) -> Tuple[Optional[Dict], Optional[Dict], Optional[Dict]]:
         """Calculate warchest requirements for a nation using simple city-based formula."""
         try:
@@ -172,18 +214,10 @@ class WarchestService:
                     logger.error(f"Error processing city data: {e}")
                     continue  # Skip this city and continue with the next one
             
-            # Military unit consumption (per day)
-            # Soldiers: $1.25 per day in peacetime, $1.88 in wartime (use wartime for warchest)
-            total_money_consumption += soldiers * 1.88
-            
-            # Tanks: $75 per day in wartime
-            total_money_consumption += tanks * 75
-            
-            # Aircraft: $750 per day in wartime
-            total_money_consumption += aircraft * 750
-            
-            # Ships: $5,062.5 per day in wartime
-            total_money_consumption += ships * 5062.5
+            # Calculate money required for 2 days of unit purchases (not upkeep)
+            # Based on references.md unit production rates and costs
+            money_for_unit_purchases = self.calculate_unit_purchase_costs(cities_data, nation_info)
+            total_money_consumption = money_for_unit_purchases
             
             # City count-based resource requirements
             city_count = len(cities_data)

@@ -210,17 +210,29 @@ class ProjectsCog(commands.Cog):
                         has_rnd = True
                         break
             rnd_bonus = 2 if has_rnd else 0
+            
+            # Check for Military Research Center project (also gives +2 slots)
+            has_military_research = False
+            military_research = getattr(nation, 'military_research', {})
+            if isinstance(military_research, dict):
+                # Check if any of the military research capacities are > 0
+                has_military_research = any(
+                    military_research.get(key, 0) > 0 
+                    for key in ['ground_capacity', 'air_capacity', 'naval_capacity']
+                )
+            military_research_bonus = 2 if has_military_research else 0
+            
             # Wars achievement bonus: +1 slot at 100 total wars (won + lost)
             wars_total = int(getattr(nation, 'wars_won', 0) or 0) + int(getattr(nation, 'wars_lost', 0) or 0)
             wars_bonus = 1 if wars_total >= 100 else 0
             
             # Calculate current and target slots
-            # Formula: max(1, 1 + floor(infra/4000)) + RnD bonus + Wars bonus
-            current_slots = max(1, 1 + int(total_infra // 4000)) + rnd_bonus + wars_bonus
+            # Formula: max(1, 1 + floor(infra/4000)) + RnD bonus + Military Research bonus + Wars bonus
+            current_slots = max(1, 1 + int(total_infra // 4000)) + rnd_bonus + military_research_bonus + wars_bonus
             desired_slots = projects_built + 1
-            needed_floor = max(0, desired_slots - 1 - rnd_bonus - wars_bonus)
+            needed_floor = max(0, desired_slots - 1 - rnd_bonus - military_research_bonus - wars_bonus)
             target_total = needed_floor * 4000
-            target_slots = max(1, 1 + int(target_total // 4000)) + rnd_bonus + wars_bonus
+            target_slots = max(1, 1 + int(target_total // 4000)) + rnd_bonus + military_research_bonus + wars_bonus
             delta_needed = max(0, target_total - int(total_infra))
             if delta_needed == 0:
                 await interaction.followup.send("✅ You already have enough infrastructure for the next project slot.")
@@ -358,6 +370,19 @@ class ProjectsCog(commands.Cog):
             base_slots = max(1, 1 + int(current_infra // 4000))
             if has_rnd:
                 base_slots += 2
+            
+            # Check for Military Research Center project (also gives +2 slots)
+            has_military_research = False
+            military_research = getattr(nation, 'military_research', {})
+            if isinstance(military_research, dict):
+                # Check if any of the military research capacities are > 0
+                has_military_research = any(
+                    military_research.get(key, 0) > 0 
+                    for key in ['ground_capacity', 'air_capacity', 'naval_capacity']
+                )
+            if has_military_research:
+                base_slots += 2
+                
             wars_total = int(getattr(nation, 'wars_won', 0) or 0) + int(getattr(nation, 'wars_lost', 0) or 0)
             if wars_total >= 100:
                 base_slots += 1

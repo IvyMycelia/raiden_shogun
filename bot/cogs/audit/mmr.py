@@ -92,7 +92,7 @@ async def run_mmr_audit(interaction: discord.Interaction, alliance_service, nati
         # Send summary with violators in codeblock
         if violators:
             violators_text = " ".join(violators)
-            await interaction.followup.send(f"```The Following People Need To Fix MMR: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Fix MMR\n{violators_text}```")
             
     except Exception as e:
         logger.error(f"Error in MMR audit: {e}")
@@ -129,9 +129,9 @@ async def check_mmr_compliance(member: Dict, nation_data: Dict, cache_service) -
         for i, city in enumerate(cities_data):
             city_id = city.get("id", i+1)
             barracks = city.get("barracks", 0)
-            factories = city.get("factories", 0)
-            hangars = city.get("hangars", 0)
-            drydocks = city.get("drydocks", 0)
+            factories = city.get("factory", 0)
+            hangars = city.get("hangar", 0)
+            drydocks = city.get("drydock", 0)
             
             city_violations = []
             if barracks < required_barracks:

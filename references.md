@@ -1,3 +1,35 @@
+ Capacity Upgrades:
+
+    Planes Capacity - Flat increase to plane cap. 15 planes per level. (Maximum of 300)
+    Ground Capacity - Flat increase to tanks and soldiers cap. 250 tanks per level and 3000 per upgrade. (Maximum of 5000 tanks and 60k soldiers)
+    Naval Capacity - Flat increases to increase ships cap. 5 ships per level. (Maximum of 100 ships) 
+
+ 
+
+Cost Reduction Upgrades:
+
+Plane Cost - 
+
+    Reduce plane purchase cost by $50 per unit & 0.2 aluminum per level (Maximum of $1000 & 4 aluminum per plane)
+    Reduce plane upkeep cost per unit by $15 at peace & $10 at war per level (Maximum of $300 peace & $200 at war per plane)
+
+Ground Cost -
+
+    Reduce soldier purchase cost by $0.1 per unit (Maximum $2 per soldier)
+    Reduce tank purchase cost by $1 per unit & 0.01 steel (Maximum of $20 & 0.2 per tank)
+    Reduce soldier upkeep cost per unit by $0.02 at peace & $0.03 at war (Maximum of $0.4 at peace & $0.6 at war per soldier)
+    Reduce soldier food upkeep making it 1 food + 10 per unit at peace, e.g. 1 food per 750>760 soldiers (Maximum of 1 food per 950 soldiers)
+    Reduce soldier food upkeep making it 1 food + 15 per unit at war, e.g. 1 food per 500>515 (Maximum of 1 food per 800 soldiers)
+    Reduce tank upkeep cost per unit by $1 at peace & $1.5 at war (Maximum of $20 at peace & $30 at war per tank)
+
+
+Naval Cost -
+
+    Reduce ship purchase cost by $500 per unit & 0.5 steel per level (Maximum of $10000 & 10 steel per ship)
+    Reduce ship upkeep cost per unit by $30 at peace & $50 at war per level (Maximum of $600 peace & $1000 at war per ship)
+
+  
+
 A National Project (often shortened to just a Project) is a massive nation improvement with huge costs and benefits. In total, there are 39 Projects that, depending on their nature, can boost your nation's military, production or income.
 
 Each National Project needs a National Project slot to be built. Each nation has 1 free project slot. Every 4,000 infrastructure nationwide unlocks an additional slot, in the same way that every 50 infrastructure in a city unlocks an improvement slot, for example, nations need to have 4k infrastructure to build your second project, 8k infrastructure to build your third project etc. Nations which have a total of 100 wars won/lost (combined) get 1 more project slot.

@@ -101,7 +101,7 @@ async def run_projects_audit(interaction: discord.Interaction, alliance_service,
         # Send summary with violators in codeblock
         if violators:
             violators_text = " ".join(violators)
-            await interaction.followup.send(f"```The Following People Need To Build Projects: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Build Projects\n{violators_text}```")
             
     except Exception as e:
         logger.error(f"Error in project audit: {e}")
@@ -153,6 +153,16 @@ async def check_project_compliance(member: Dict, nation_data: Dict, cache_servic
         has_rnd = has('research_and_development_center', 'research_and_development_center')
         has_pe = has('pirate_economy', 'pirate_economy')
         has_ape = has('advanced_pirate_economy', 'advanced_pirate_economy')
+        
+        # Check for Military Research Center project
+        has_military_research = False
+        military_research = nation_data.get('military_research', {})
+        if isinstance(military_research, dict):
+            # Check if any of the military research capacities are > 0
+            has_military_research = any(
+                military_research.get(key, 0) > 0 
+                for key in ['ground_capacity', 'air_capacity', 'naval_capacity']
+            )
         
         logger.info(f"Nation {member.get('id')} project status: AC={has_activity}, PB={has_pb}, IA={has_ia}, RnD={has_rnd}, PE={has_pe}, APE={has_ape}")
         

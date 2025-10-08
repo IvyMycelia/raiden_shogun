@@ -242,7 +242,7 @@ async def run_activity_audit(interaction: discord.Interaction, alliance_service,
         # Send summary with violators in codeblock
         if needers:
             violators_text = " ".join(needers)
-            await interaction.followup.send(f"```The Following People Need To Login: {violators_text}```")
+            await interaction.followup.send(f"```### The Following People Need To Login\n{violators_text}```")
         
     except Exception as e:
         logger.error(f"Error in activity audit: {e}")

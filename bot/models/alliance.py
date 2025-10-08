@@ -17,17 +17,17 @@ class Alliance:
     flag: str
     members: List[Dict[str, Any]]
     bank: Dict[str, float]
-    created: datetime
+    date: datetime
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'Alliance':
         """Create Alliance from dictionary."""
-        # Parse created timestamp
-        created_str = data.get('created', '1970-01-01T00:00:00+00:00')
+        # Parse date timestamp
+        date_str = data.get('date', '1970-01-01T00:00:00+00:00')
         try:
-            created = datetime.fromisoformat(created_str.replace('Z', '+00:00'))
+            date = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
         except ValueError:
-            created = datetime.fromisoformat('1970-01-01T00:00:00+00:00')
+            date = datetime.fromisoformat('1970-01-01T00:00:00+00:00')
         
         return cls(
             id=data.get('id', 0),
@@ -38,7 +38,7 @@ class Alliance:
             flag=data.get('flag', ''),
             members=data.get('members', []),
             bank=data.get('bank', {}),
-            created=created
+            date=date
         )
     
     def get_member_count(self) -> int:
