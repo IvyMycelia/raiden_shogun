@@ -91,14 +91,11 @@ class BuildCog(commands.Cog):
         power_needed = infra_needed // 50
         
         # Choose optimal power source based on infrastructure
-        if infra_needed >= 2000:
+        # Nuclear is more efficient for high infra (saves improvement slots)
+        if infra_needed >= 1000:
             # Nuclear power: 1 plant powers up to 2000 infra, uses 2.4 uranium per 1000 infra
             nuclear_plants_needed = (infra_needed + 1999) // 2000  # Ceiling division
             build["imp_nuclearpower"] = min(nuclear_plants_needed, 5)
-        elif infra_needed >= 1000:
-            # Wind power: 1 plant powers up to 250 infra
-            wind_plants_needed = (infra_needed + 249) // 250  # Ceiling division
-            build["imp_windpower"] = min(wind_plants_needed, 5)
         else:
             # Wind power for low infra
             wind_plants_needed = (infra_needed + 249) // 250
@@ -136,45 +133,45 @@ class BuildCog(commands.Cog):
         # Power resource needs
         if build["imp_nuclearpower"] > 0:
             # Nuclear: 2.4 uranium per 1000 infra per plant
-            uranium_needed += build["imp_nuclearpower"] * (infra_needed / 1000) * 2.4
+            uranium_needed = build["imp_nuclearpower"] * (infra_needed / 1000) * 2.4
         
         # Military resource needs
         if build["imp_factory"] > 0:
             # Steel mills need iron and coal: 3 iron + 3 coal = 9 steel
-            iron_needed += build["imp_factory"] * 3  # Per day
-            coal_needed += build["imp_factory"] * 3
+            iron_needed = build["imp_factory"] * 3  # Per day
+            coal_needed = build["imp_factory"] * 3
         
         if build["imp_hangars"] > 0:
             # Aluminum refineries need bauxite: 3 bauxite = 9 aluminum
-            bauxite_needed += build["imp_hangars"] * 3
+            bauxite_needed = build["imp_hangars"] * 3
         
         if build["imp_barracks"] > 0 or build["imp_factory"] > 0:
             # Gas refineries need oil: 3 oil = 6 gasoline
-            oil_needed += max(build["imp_barracks"], build["imp_factory"]) * 3
+            oil_needed = max(build["imp_barracks"], build["imp_factory"]) * 3
         
         if build["imp_factory"] > 0:
             # Munitions factories need lead: 6 lead = 18 munitions
-            lead_needed += build["imp_factory"] * 6
+            lead_needed = build["imp_factory"] * 6
         
         # Calculate resource production needed
         # Each mine produces 3 tons per day (0.25 per turn)
         if uranium_needed > 0:
-            build["imp_uramine"] = min(int(uranium_needed / 3) + 1, 5)
+            build["imp_uramine"] = min(max(1, int(uranium_needed / 3)), 5)
         
         if iron_needed > 0:
-            build["imp_ironmine"] = min(int(iron_needed / 3) + 1, 10)
+            build["imp_ironmine"] = min(max(1, int(iron_needed / 3)), 10)
         
         if bauxite_needed > 0:
-            build["imp_bauxitemine"] = min(int(bauxite_needed / 3) + 1, 10)
+            build["imp_bauxitemine"] = min(max(1, int(bauxite_needed / 3)), 10)
         
         if lead_needed > 0:
-            build["imp_leadmine"] = min(int(lead_needed / 3) + 1, 10)
+            build["imp_leadmine"] = min(max(1, int(lead_needed / 3)), 10)
         
         if coal_needed > 0:
-            build["imp_coalmine"] = min(int(coal_needed / 3) + 1, 10)
+            build["imp_coalmine"] = min(max(1, int(coal_needed / 3)), 10)
         
         if oil_needed > 0:
-            build["imp_oilwell"] = min(int(oil_needed / 3) + 1, 10)
+            build["imp_oilwell"] = min(max(1, int(oil_needed / 3)), 10)
         
         # STEP 4: MANUFACTURING IMPROVEMENTS
         if build["imp_factory"] > 0:
@@ -253,7 +250,7 @@ class BuildCog(commands.Cog):
             build["imp_hangars"] + build["imp_drydock"]
         )
         
-        remaining_slots = imp_total - used_improvements
+        remaining_slots = max(0, imp_total - used_improvements)
         
         # Allocate commerce improvements based on MMR type
         if mmr_type == "whale":
@@ -261,7 +258,7 @@ class BuildCog(commands.Cog):
             banks = min(remaining_slots // 3, 5)
             malls = min((remaining_slots - banks) // 3, 4)
             stadiums = min((remaining_slots - banks - malls) // 4, 3)
-            supermarkets = min(remaining_slots - banks - malls - stadiums, 4)
+            supermarkets = min(max(0, remaining_slots - banks - malls - stadiums), 4)
             
             build["imp_bank"] = banks
             build["imp_mall"] = malls
@@ -270,7 +267,7 @@ class BuildCog(commands.Cog):
         else:
             # Raider: Minimal commerce, focus on military
             build["imp_bank"] = min(remaining_slots // 4, 2)
-            build["imp_mall"] = min((remaining_slots - build["imp_bank"]) // 4, 2)
+            build["imp_mall"] = min(max(0, (remaining_slots - build["imp_bank"]) // 4), 2)
             build["imp_stadium"] = 0
             build["imp_supermarket"] = 0
         
