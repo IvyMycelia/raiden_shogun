@@ -126,9 +126,12 @@ class BuildCog(commands.Cog):
         
         # Power resource needs only
         if build["imp_nuclearpower"] > 0:
-            # Nuclear: 2.4 uranium per 1000 infra per plant
-            uranium_needed = build["imp_nuclearpower"] * (infra_needed / 1000) * 2.4
-            build["imp_uramine"] = min(max(1, int(uranium_needed / 3)), 5)
+            # Nuclear: 2.4 uranium per 1000 infra per plant per day
+            # Convert to per turn: 2.4 / 12 = 0.2 per turn per 1000 infra
+            uranium_needed_per_turn = build["imp_nuclearpower"] * (infra_needed / 1000) * 0.2
+            # Each uranium mine produces 0.25/turn
+            uranium_mines_needed = int(uranium_needed_per_turn / 0.25) + 1  # Ceiling division
+            build["imp_uramine"] = min(uranium_mines_needed, 5)
         
         # NO military resource production - prioritize commerce instead
         # Military units can be bought with money, commerce generates money
@@ -142,16 +145,18 @@ class BuildCog(commands.Cog):
         # Just 1 farm - food can be bought with commerce income
         build["imp_farm"] = 1
         
-        # STEP 6: CIVIL IMPROVEMENTS (Ultra-Minimal Crime and Disease Control)
-        # Ultra-minimal civil improvements to maximize commerce slots
+        # STEP 6: CIVIL IMPROVEMENTS (Adequate Crime and Disease Control)
+        # Adequate civil improvements to keep crime/disease under 1%
         
-        # Minimal crime control: 1 police station
+        # Crime control: 1 police station (adequate for most cases)
         build["imp_policestation"] = 1
         
-        # Minimal disease control: 2 hospitals (like your optimal)
+        # Disease control: Use realistic hospital count
+        # For most cases, 2-3 hospitals are sufficient
+        # Your optimal build shows 2 hospitals, so use that as baseline
         build["imp_hospital"] = 2
         
-        # Minimal pollution control: 1 recycling center
+        # Pollution control: 1 recycling center (adequate for minimal pollution)
         build["imp_recyclingcenter"] = 1
         
         # Subway: +8% commerce, -45 pollution
