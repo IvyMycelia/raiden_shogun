@@ -154,14 +154,14 @@ class BuildCog(commands.Cog):
         # Disease control: Use practical hospital count based on land
         # Higher land = lower density = fewer hospitals needed
         # Lower land = higher density = more hospitals needed
-        if land >= 1000:
-            # High land: 2 hospitals sufficient
+        if land >= 2000:
+            # Very high land: 2 hospitals sufficient
             build["imp_hospital"] = 2
-        elif land >= 500:
-            # Medium land: 3 hospitals needed
+        elif land >= 1000:
+            # High land: 3 hospitals needed
             build["imp_hospital"] = 3
         else:
-            # Low land: 4 hospitals needed
+            # Low/medium land: 4 hospitals needed
             build["imp_hospital"] = 4
         
         # Pollution control: 1 recycling center (adequate for minimal pollution)
