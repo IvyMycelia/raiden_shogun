@@ -222,7 +222,6 @@ class BuildCog(commands.Cog):
 
     @app_commands.command(name="build", description="Generate optimal city build based on your nation's data")
     @app_commands.describe(
-        mmr_type="Raiding or Whale MMR type",
         continent="Your continent (optional, auto-detected if not provided)",
         land="Land count (optional, uses first city if not provided)",
         infra="Infrastructure (optional, uses first city if not provided)",
@@ -231,11 +230,6 @@ class BuildCog(commands.Cog):
         hangars="Number of hangars (max 5, default 5)",
         drydocks="Number of drydocks (max 3, default 3)"
     )
-    @app_commands.choices(mmr_type=[
-        app_commands.Choice(name="Raiding", value="raiding"),
-        app_commands.Choice(name="Whale", value="whale"),
-        app_commands.Choice(name="Balanced", value="balanced")
-    ])
     @app_commands.choices(continent=[
         app_commands.Choice(name="North America", value="North America"),
         app_commands.Choice(name="Europe", value="Europe"),
@@ -245,7 +239,6 @@ class BuildCog(commands.Cog):
         app_commands.Choice(name="Australia", value="Australia")
     ])
     async def build_command(self, interaction: discord.Interaction, 
-                           mmr_type: str,
                            continent: Optional[str] = None,
                            land: Optional[int] = None,
                            infra: Optional[int] = None,
@@ -282,6 +275,13 @@ class BuildCog(commands.Cog):
                 nation_continent = getattr(nation, 'continent', 'North America')
                 continent = nation_continent if nation_continent else 'North America'
             
+            # Auto-determine MMR type based on city count (C15+ is whale)
+            city_count = getattr(nation, 'cities', 0) or 0
+            if city_count >= 15:
+                mmr_type = "whale"
+            else:
+                mmr_type = "raiding"
+            
             # Get nation's projects
             projects = self._get_nation_projects(nation)
             
@@ -311,7 +311,8 @@ class BuildCog(commands.Cog):
             embed = discord.Embed(
                 title="🏗️ Optimal City Build",
                 description=f"**Nation:** {getattr(nation, 'name', 'Unknown')}\n"
-                           f"**MMR Type:** {mmr_type.title()}\n"
+                           f"**Cities:** {city_count}\n"
+                           f"**MMR Type:** {mmr_type.title()} (auto-detected)\n"
                            f"**Continent:** {continent}\n"
                            f"**Infrastructure:** {infra:,}\n"
                            f"**Land:** {land:,}",

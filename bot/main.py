@@ -70,10 +70,10 @@ async def on_ready():
     bot.loop.create_task(start_latency_monitor())
         
         # Sync commands
-        try:
-            synced = await bot.tree.sync()
+    try:
+        synced = await bot.tree.sync()
         bot_logger.info(f"Synced {len(synced)} commands")
-        except Exception as e:
+    except Exception as e:
         bot_logger.error(f"Failed to sync commands: {e}")
     
     bot_logger.info("Bot is ready!")
