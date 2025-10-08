@@ -45,14 +45,13 @@ class BuildCog(commands.Cog):
                                continent: str, projects: set, 
                                barracks: int = 5, factories: int = 5, 
                                hangars: int = 5, drydocks: int = 3) -> Dict[str, Any]:
-        """Calculate the most optimal self-sufficient build for a city."""
+        """Calculate the most optimal self-sufficient build for a city using references.md formulas."""
         
         # Base infrastructure needed calculation
         infra_needed = max(infra, 1000)  # Minimum 1000 infra
         
-        # Calculate total improvements based on land and infrastructure
-        max_improvements = min(land // 100, infra_needed // 50)
-        imp_total = min(max_improvements, 50)  # Cap at 50 improvements
+        # Calculate total improvements based on infrastructure (Improvements = Infra/50)
+        imp_total = int(infra_needed // 50)
         
         # Initialize all improvements to 0
         build = {
@@ -87,75 +86,207 @@ class BuildCog(commands.Cog):
             "imp_drydock": 0
         }
         
-        # Power requirements (1 power per 50 infrastructure)
+        # STEP 1: POWER CALCULATION
+        # Power needed = 1 per 50 infrastructure
         power_needed = infra_needed // 50
         
-        # Nuclear power is most efficient for high infra
-        if infra_needed >= 1000:
-            build["imp_nuclearpower"] = min(power_needed, 5)
+        # Choose optimal power source based on infrastructure
+        if infra_needed >= 2000:
+            # Nuclear power: 1 plant powers up to 2000 infra, uses 2.4 uranium per 1000 infra
+            nuclear_plants_needed = (infra_needed + 1999) // 2000  # Ceiling division
+            build["imp_nuclearpower"] = min(nuclear_plants_needed, 5)
+        elif infra_needed >= 1000:
+            # Wind power: 1 plant powers up to 250 infra
+            wind_plants_needed = (infra_needed + 249) // 250  # Ceiling division
+            build["imp_windpower"] = min(wind_plants_needed, 5)
         else:
-            # Use wind power for lower infra
-            build["imp_windpower"] = min(power_needed, 5)
+            # Wind power for low infra
+            wind_plants_needed = (infra_needed + 249) // 250
+            build["imp_windpower"] = min(wind_plants_needed, 5)
         
-        # Resource production based on MMR type and continent
+        # STEP 2: MMR MILITARY IMPROVEMENTS
         if mmr_type == "raiding":
-            # Raiding build - focus on military production
-            build["imp_uramine"] = min(5, imp_total // 8)
-            build["imp_ironmine"] = min(3, imp_total // 10)
-            build["imp_bauxitemine"] = min(3, imp_total // 10)
-            build["imp_leadmine"] = min(2, imp_total // 12)
+            # Raider MMR: 5050 (5 barracks, 0 factories, 5 hangars, 0 drydocks)
+            build["imp_barracks"] = min(barracks, 5)
+            build["imp_factory"] = 0
+            build["imp_hangars"] = min(hangars, 5)
+            build["imp_drydock"] = 0
         elif mmr_type == "whale":
-            # Whale build - focus on economic improvements
-            build["imp_bank"] = min(4, imp_total // 6)
-            build["imp_mall"] = min(4, imp_total // 6)
-            build["imp_stadium"] = min(3, imp_total // 8)
-            build["imp_supermarket"] = min(2, imp_total // 10)
+            # Whale MMR: 0250 (0 barracks, 2 factories, 5 hangars, 0 drydocks)
+            build["imp_barracks"] = 0
+            build["imp_factory"] = min(factories, 5)
+            build["imp_hangars"] = min(hangars, 5)
+            build["imp_drydock"] = 0
         else:
-            # Balanced build
-            build["imp_uramine"] = min(3, imp_total // 10)
-            build["imp_ironmine"] = min(2, imp_total // 12)
-            build["imp_bank"] = min(2, imp_total // 12)
-            build["imp_mall"] = min(2, imp_total // 12)
+            # Custom MMR
+            build["imp_barracks"] = min(barracks, 5)
+            build["imp_factory"] = min(factories, 5)
+            build["imp_hangars"] = min(hangars, 5)
+            build["imp_drydock"] = min(drydocks, 3)
         
-        # Essential improvements
-        build["imp_policestation"] = 1
-        build["imp_hospital"] = 1
-        build["imp_recyclingcenter"] = 1
-        build["imp_subway"] = 1
+        # STEP 3: RESOURCE PRODUCTION FOR SELF-SUFFICIENCY
+        # Calculate resource needs based on power and military
+        uranium_needed = 0
+        iron_needed = 0
+        bauxite_needed = 0
+        lead_needed = 0
+        coal_needed = 0
+        oil_needed = 0
         
-        # Military improvements based on parameters
-        build["imp_barracks"] = min(barracks, 5)
-        build["imp_factory"] = min(factories, 5)
-        build["imp_hangars"] = min(hangars, 5)
-        build["imp_drydock"] = min(drydocks, 3)
+        # Power resource needs
+        if build["imp_nuclearpower"] > 0:
+            # Nuclear: 2.4 uranium per 1000 infra per plant
+            uranium_needed += build["imp_nuclearpower"] * (infra_needed / 1000) * 2.4
         
-        # Manufacturing improvements based on military needs
+        # Military resource needs
         if build["imp_factory"] > 0:
-            build["imp_steelmill"] = min(2, imp_total // 15)
-            build["imp_munitionsfactory"] = min(2, imp_total // 15)
+            # Steel mills need iron and coal: 3 iron + 3 coal = 9 steel
+            iron_needed += build["imp_factory"] * 3  # Per day
+            coal_needed += build["imp_factory"] * 3
         
         if build["imp_hangars"] > 0:
-            build["imp_aluminumrefinery"] = min(2, imp_total // 15)
+            # Aluminum refineries need bauxite: 3 bauxite = 9 aluminum
+            bauxite_needed += build["imp_hangars"] * 3
         
-        # Gas refinery for fuel production
         if build["imp_barracks"] > 0 or build["imp_factory"] > 0:
-            build["imp_gasrefinery"] = min(2, imp_total // 15)
+            # Gas refineries need oil: 3 oil = 6 gasoline
+            oil_needed += max(build["imp_barracks"], build["imp_factory"]) * 3
         
-        # Farm for food production
-        if infra_needed >= 500:
-            build["imp_farm"] = min(2, imp_total // 20)
+        if build["imp_factory"] > 0:
+            # Munitions factories need lead: 6 lead = 18 munitions
+            lead_needed += build["imp_factory"] * 6
+        
+        # Calculate resource production needed
+        # Each mine produces 3 tons per day (0.25 per turn)
+        if uranium_needed > 0:
+            build["imp_uramine"] = min(int(uranium_needed / 3) + 1, 5)
+        
+        if iron_needed > 0:
+            build["imp_ironmine"] = min(int(iron_needed / 3) + 1, 10)
+        
+        if bauxite_needed > 0:
+            build["imp_bauxitemine"] = min(int(bauxite_needed / 3) + 1, 10)
+        
+        if lead_needed > 0:
+            build["imp_leadmine"] = min(int(lead_needed / 3) + 1, 10)
+        
+        if coal_needed > 0:
+            build["imp_coalmine"] = min(int(coal_needed / 3) + 1, 10)
+        
+        if oil_needed > 0:
+            build["imp_oilwell"] = min(int(oil_needed / 3) + 1, 10)
+        
+        # STEP 4: MANUFACTURING IMPROVEMENTS
+        if build["imp_factory"] > 0:
+            build["imp_steelmill"] = min(build["imp_factory"], 5)
+            build["imp_munitionsfactory"] = min(build["imp_factory"], 5)
+        
+        if build["imp_hangars"] > 0:
+            build["imp_aluminumrefinery"] = min(build["imp_hangars"], 5)
+        
+        if build["imp_barracks"] > 0 or build["imp_factory"] > 0:
+            build["imp_gasrefinery"] = min(max(build["imp_barracks"], build["imp_factory"]), 5)
+        
+        # STEP 5: FOOD PRODUCTION
+        # Base food production: Farm Count * (Land Area / 500)
+        # With Mass Irrigation: Farm Count * (Land Area / 400)
+        base_food_per_farm = land / 500
+        if "mass_irrigation" in projects:
+            base_food_per_farm = land / 400
+        
+        # Estimate food needed (rough calculation)
+        population = infra_needed * 100  # Base Population = Infrastructure * 100
+        food_needed = population / 1000  # Rough estimate
+        farms_needed = int(food_needed / base_food_per_farm) + 1
+        build["imp_farm"] = min(farms_needed, 20)
+        
+        # STEP 6: CIVIL IMPROVEMENTS (Crime and Disease Control)
+        # Calculate base population for crime/disease calculations
+        base_population = infra_needed * 100
+        
+        # Crime control: Police Stations reduce crime by 2.5% each
+        # Crime (%) = ((103 - Commerce)^2 + (Infrastructure * 100))/(111111) - Police Modifier
+        # Target: Crime < 1%
+        commerce_rate = 100  # Will be calculated with commerce improvements
+        base_crime = ((103 - commerce_rate) ** 2 + (infra_needed * 100)) / 111111
+        police_needed = max(0, int((base_crime - 1) / 0.025) + 1)
+        build["imp_policestation"] = min(police_needed, 5)
+        
+        # Disease control: Hospitals reduce disease by 2.5% each
+        # Disease Rate = (((Population Density^2) * 0.01) - 25)/100) + (Base Population/100000) + Pollution Modifier - Hospital Modifier
+        # Target: Disease < 1%
+        pop_density = base_population / land if land > 0 else 0
+        base_disease = (((pop_density ** 2) * 0.01) - 25) / 100 + (base_population / 100000)
+        hospital_needed = max(0, int((base_disease - 1) / 0.025) + 1)
+        build["imp_hospital"] = min(hospital_needed, 5)
+        
+        # Pollution control: Recycling Centers reduce pollution by 70 each
+        # Calculate total pollution from improvements
+        total_pollution = 0
+        total_pollution += build["imp_coalmine"] * 12
+        total_pollution += build["imp_ironmine"] * 12
+        total_pollution += build["imp_uramine"] * 20
+        total_pollution += build["imp_farm"] * 2
+        total_pollution += build["imp_steelmill"] * 40
+        total_pollution += build["imp_aluminumrefinery"] * 40
+        total_pollution += build["imp_munitionsfactory"] * 32
+        total_pollution += build["imp_gasrefinery"] * 32
+        total_pollution += build["imp_policestation"] * 1
+        total_pollution += build["imp_hospital"] * 4
+        
+        recycling_needed = max(0, int(total_pollution / 70) + 1)
+        build["imp_recyclingcenter"] = min(recycling_needed, 3)
+        
+        # Subway: +8% commerce, -45 pollution
+        build["imp_subway"] = 1  # Always build 1 subway
+        
+        # STEP 7: COMMERCE IMPROVEMENTS (Income Optimization)
+        # Calculate remaining improvement slots
+        used_improvements = (
+            build["imp_nuclearpower"] + build["imp_windpower"] +
+            build["imp_uramine"] + build["imp_ironmine"] + build["imp_bauxitemine"] +
+            build["imp_leadmine"] + build["imp_coalmine"] + build["imp_oilwell"] +
+            build["imp_farm"] + build["imp_steelmill"] + build["imp_aluminumrefinery"] +
+            build["imp_munitionsfactory"] + build["imp_gasrefinery"] +
+            build["imp_policestation"] + build["imp_hospital"] + build["imp_recyclingcenter"] +
+            build["imp_subway"] + build["imp_barracks"] + build["imp_factory"] +
+            build["imp_hangars"] + build["imp_drydock"]
+        )
+        
+        remaining_slots = imp_total - used_improvements
+        
+        # Allocate commerce improvements based on MMR type
+        if mmr_type == "whale":
+            # Whale: Focus on commerce
+            banks = min(remaining_slots // 3, 5)
+            malls = min((remaining_slots - banks) // 3, 4)
+            stadiums = min((remaining_slots - banks - malls) // 4, 3)
+            supermarkets = min(remaining_slots - banks - malls - stadiums, 4)
+            
+            build["imp_bank"] = banks
+            build["imp_mall"] = malls
+            build["imp_stadium"] = stadiums
+            build["imp_supermarket"] = supermarkets
+        else:
+            # Raider: Minimal commerce, focus on military
+            build["imp_bank"] = min(remaining_slots // 4, 2)
+            build["imp_mall"] = min((remaining_slots - build["imp_bank"]) // 4, 2)
+            build["imp_stadium"] = 0
+            build["imp_supermarket"] = 0
         
         # Project bonuses
-        if "mass_irrigation" in projects:
-            build["imp_farm"] = min(build["imp_farm"] + 2, 5)
-        
         if "international_trade_center" in projects:
-            build["imp_bank"] = min(build["imp_bank"] + 1, 5)
+            build["imp_bank"] = min(build["imp_bank"] + 1, 6)  # Max 6 with ITC
             build["imp_mall"] = min(build["imp_mall"] + 1, 5)
         
-        if "center_for_civil_engineering" in projects:
-            build["imp_subway"] = min(build["imp_subway"] + 1, 3)
-            build["imp_recyclingcenter"] = min(build["imp_recyclingcenter"] + 1, 3)
+        if "telecommunications_satellite" in projects:
+            build["imp_mall"] = min(build["imp_mall"] + 1, 5)  # Max 5 with Telecom
+        
+        if "clinical_research_center" in projects:
+            build["imp_hospital"] = min(build["imp_hospital"] + 1, 6)  # Max 6 with CRC
+        
+        if "recycling_initiative" in projects:
+            build["imp_recyclingcenter"] = min(build["imp_recyclingcenter"] + 1, 4)  # Max 4 with RI
         
         # Continent bonuses
         if continent == "North America":
@@ -167,9 +298,9 @@ class BuildCog(commands.Cog):
         elif continent == "Africa":
             build["imp_uramine"] = min(build["imp_uramine"] + 1, 5)
         elif continent == "South America":
-            build["imp_farm"] = min(build["imp_farm"] + 1, 5)
+            build["imp_farm"] = min(build["imp_farm"] + 1, 20)
         elif continent == "Australia":
-            build["imp_ironmine"] = min(build["ironmine"] + 1, 5)
+            build["imp_ironmine"] = min(build["imp_ironmine"] + 1, 10)
         
         return build
 
