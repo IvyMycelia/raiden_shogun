@@ -1,0 +1,352 @@
+from __future__ import annotations
+
+import discord
+from discord import app_commands
+from discord.ext import commands
+import logging
+from typing import Optional, Dict, Any
+import json
+
+from bot.services.nation_service import NationService
+from bot.services.cache_service import CacheService
+from bot.config.settings import config
+
+logger = logging.getLogger('raiden_shogun')
+
+
+class BuildCog(commands.Cog):
+    """Nation build optimization commands."""
+
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+        self.nation_service = NationService()
+        self.cache_service = CacheService()
+
+    def _get_first_city_data(self, nation: object) -> tuple[int, int]:
+        """Get infrastructure and land from the first city."""
+        cities_data = getattr(nation, 'cities_data', [])
+        if not cities_data:
+            return 0, 0
+        
+        first_city = cities_data[0]
+        if hasattr(first_city, 'infrastructure'):
+            infra = int(getattr(first_city, 'infrastructure', 0) or 0)
+        else:
+            infra = int(first_city.get('infrastructure', 0) or 0)
+            
+        if hasattr(first_city, 'land'):
+            land = int(getattr(first_city, 'land', 0) or 0)
+        else:
+            land = int(first_city.get('land', 0) or 0)
+            
+        return infra, land
+
+    def _calculate_optimal_build(self, infra: int, land: int, mmr_type: str, 
+                               continent: str, projects: set, 
+                               barracks: int = 5, factories: int = 5, 
+                               hangars: int = 5, drydocks: int = 3) -> Dict[str, Any]:
+        """Calculate the most optimal self-sufficient build for a city."""
+        
+        # Base infrastructure needed calculation
+        infra_needed = max(infra, 1000)  # Minimum 1000 infra
+        
+        # Calculate total improvements based on land and infrastructure
+        max_improvements = min(land // 100, infra_needed // 50)
+        imp_total = min(max_improvements, 50)  # Cap at 50 improvements
+        
+        # Initialize all improvements to 0
+        build = {
+            "infra_needed": infra_needed,
+            "imp_total": imp_total,
+            "imp_coalpower": 0,
+            "imp_oilpower": 0,
+            "imp_windpower": 0,
+            "imp_nuclearpower": 0,
+            "imp_coalmine": 0,
+            "imp_oilwell": 0,
+            "imp_uramine": 0,
+            "imp_leadmine": 0,
+            "imp_ironmine": 0,
+            "imp_bauxitemine": 0,
+            "imp_farm": 0,
+            "imp_gasrefinery": 0,
+            "imp_aluminumrefinery": 0,
+            "imp_munitionsfactory": 0,
+            "imp_steelmill": 0,
+            "imp_policestation": 0,
+            "imp_hospital": 0,
+            "imp_recyclingcenter": 0,
+            "imp_subway": 0,
+            "imp_supermarket": 0,
+            "imp_bank": 0,
+            "imp_mall": 0,
+            "imp_stadium": 0,
+            "imp_barracks": 0,
+            "imp_factory": 0,
+            "imp_hangars": 0,
+            "imp_drydock": 0
+        }
+        
+        # Power requirements (1 power per 50 infrastructure)
+        power_needed = infra_needed // 50
+        
+        # Nuclear power is most efficient for high infra
+        if infra_needed >= 1000:
+            build["imp_nuclearpower"] = min(power_needed, 5)
+        else:
+            # Use wind power for lower infra
+            build["imp_windpower"] = min(power_needed, 5)
+        
+        # Resource production based on MMR type and continent
+        if mmr_type == "raiding":
+            # Raiding build - focus on military production
+            build["imp_uramine"] = min(5, imp_total // 8)
+            build["imp_ironmine"] = min(3, imp_total // 10)
+            build["imp_bauxitemine"] = min(3, imp_total // 10)
+            build["imp_leadmine"] = min(2, imp_total // 12)
+        elif mmr_type == "whale":
+            # Whale build - focus on economic improvements
+            build["imp_bank"] = min(4, imp_total // 6)
+            build["imp_mall"] = min(4, imp_total // 6)
+            build["imp_stadium"] = min(3, imp_total // 8)
+            build["imp_supermarket"] = min(2, imp_total // 10)
+        else:
+            # Balanced build
+            build["imp_uramine"] = min(3, imp_total // 10)
+            build["imp_ironmine"] = min(2, imp_total // 12)
+            build["imp_bank"] = min(2, imp_total // 12)
+            build["imp_mall"] = min(2, imp_total // 12)
+        
+        # Essential improvements
+        build["imp_policestation"] = 1
+        build["imp_hospital"] = 1
+        build["imp_recyclingcenter"] = 1
+        build["imp_subway"] = 1
+        
+        # Military improvements based on parameters
+        build["imp_barracks"] = min(barracks, 5)
+        build["imp_factory"] = min(factories, 5)
+        build["imp_hangars"] = min(hangars, 5)
+        build["imp_drydock"] = min(drydocks, 3)
+        
+        # Manufacturing improvements based on military needs
+        if build["imp_factory"] > 0:
+            build["imp_steelmill"] = min(2, imp_total // 15)
+            build["imp_munitionsfactory"] = min(2, imp_total // 15)
+        
+        if build["imp_hangars"] > 0:
+            build["imp_aluminumrefinery"] = min(2, imp_total // 15)
+        
+        # Gas refinery for fuel production
+        if build["imp_barracks"] > 0 or build["imp_factory"] > 0:
+            build["imp_gasrefinery"] = min(2, imp_total // 15)
+        
+        # Farm for food production
+        if infra_needed >= 500:
+            build["imp_farm"] = min(2, imp_total // 20)
+        
+        # Project bonuses
+        if "mass_irrigation" in projects:
+            build["imp_farm"] = min(build["imp_farm"] + 2, 5)
+        
+        if "international_trade_center" in projects:
+            build["imp_bank"] = min(build["imp_bank"] + 1, 5)
+            build["imp_mall"] = min(build["imp_mall"] + 1, 5)
+        
+        if "center_for_civil_engineering" in projects:
+            build["imp_subway"] = min(build["imp_subway"] + 1, 3)
+            build["imp_recyclingcenter"] = min(build["imp_recyclingcenter"] + 1, 3)
+        
+        # Continent bonuses
+        if continent == "North America":
+            build["imp_bank"] = min(build["imp_bank"] + 1, 5)
+        elif continent == "Europe":
+            build["imp_mall"] = min(build["imp_mall"] + 1, 5)
+        elif continent == "Asia":
+            build["imp_factory"] = min(build["imp_factory"] + 1, 5)
+        elif continent == "Africa":
+            build["imp_uramine"] = min(build["imp_uramine"] + 1, 5)
+        elif continent == "South America":
+            build["imp_farm"] = min(build["imp_farm"] + 1, 5)
+        elif continent == "Australia":
+            build["imp_ironmine"] = min(build["ironmine"] + 1, 5)
+        
+        return build
+
+    def _get_nation_projects(self, nation: object) -> set:
+        """Get the nation's projects as a set."""
+        projects = set()
+        
+        # Check project_bits
+        project_bits = getattr(nation, 'project_bits', 0) or 0
+        project_bits = int(project_bits) if project_bits else 0
+        
+        if project_bits:
+            bits = bin(project_bits)[2:][::-1]
+            project_order = [
+                'iron_works','bauxite_works','arms_stockpile','emergency_gasoline_reserve','mass_irrigation',
+                'international_trade_center','missile_launch_pad','nuclear_research_facility','iron_dome',
+                'vital_defense_system','central_intelligence_agency','center_for_civil_engineering',
+                'propaganda_bureau','uranium_enrichment_program','urban_planning','advanced_urban_planning',
+                'space_program','spy_satellite','moon_landing','pirate_economy','recycling_initiative',
+                'telecommunications_satellite','green_technologies','arable_land_agency','clinical_research_center',
+                'specialized_police_training_program','advanced_engineering_corps','government_support_agency',
+                'research_and_development_center','activity_center','metropolitan_planning','military_salvage',
+                'fallout_shelter','bureau_of_domestic_affairs','advanced_pirate_economy','mars_landing',
+                'surveillance_network','guiding_satellite','nuclear_launch_facility'
+            ]
+            for i, ch in enumerate(bits):
+                if ch == '1' and i < len(project_order):
+                    projects.add(project_order[i])
+        
+        # Check boolean project fields
+        boolean_projects = [
+            'mass_irrigation', 'international_trade_center', 'center_for_civil_engineering',
+            'iron_works', 'bauxite_works', 'arms_stockpile', 'emergency_gasoline_reserve',
+            'nuclear_research_facility', 'uranium_enrichment_program', 'urban_planning',
+            'advanced_urban_planning', 'space_program', 'spy_satellite', 'moon_landing',
+            'pirate_economy', 'recycling_initiative', 'telecommunications_satellite',
+            'green_technologies', 'arable_land_agency', 'clinical_research_center',
+            'specialized_police_training_program', 'advanced_engineering_corps',
+            'government_support_agency', 'research_and_development_center', 'activity_center',
+            'metropolitan_planning', 'military_salvage', 'fallout_shelter',
+            'bureau_of_domestic_affairs', 'advanced_pirate_economy', 'mars_landing',
+            'surveillance_network', 'guiding_satellite', 'nuclear_launch_facility'
+        ]
+        
+        for project in boolean_projects:
+            if getattr(nation, project, False):
+                projects.add(project)
+        
+        return projects
+
+    @app_commands.command(name="build", description="Generate optimal city build based on your nation's data")
+    @app_commands.describe(
+        mmr_type="Raiding or Whale MMR type",
+        continent="Your continent (optional, auto-detected if not provided)",
+        land="Land count (optional, uses first city if not provided)",
+        infra="Infrastructure (optional, uses first city if not provided)",
+        barracks="Number of barracks (max 5, default 5)",
+        factories="Number of factories (max 5, default 5)",
+        hangars="Number of hangars (max 5, default 5)",
+        drydocks="Number of drydocks (max 3, default 3)"
+    )
+    @app_commands.choices(mmr_type=[
+        app_commands.Choice(name="Raiding", value="raiding"),
+        app_commands.Choice(name="Whale", value="whale"),
+        app_commands.Choice(name="Balanced", value="balanced")
+    ])
+    @app_commands.choices(continent=[
+        app_commands.Choice(name="North America", value="North America"),
+        app_commands.Choice(name="Europe", value="Europe"),
+        app_commands.Choice(name="Asia", value="Asia"),
+        app_commands.Choice(name="Africa", value="Africa"),
+        app_commands.Choice(name="South America", value="South America"),
+        app_commands.Choice(name="Australia", value="Australia")
+    ])
+    async def build_command(self, interaction: discord.Interaction, 
+                           mmr_type: str,
+                           continent: Optional[str] = None,
+                           land: Optional[int] = None,
+                           infra: Optional[int] = None,
+                           barracks: int = 5,
+                           factories: int = 5,
+                           hangars: int = 5,
+                           drydocks: int = 3):
+        """Generate optimal city build."""
+        await interaction.response.defer()
+        
+        try:
+            # Get user's nation
+            user_nid = self.cache_service.get_user_nation(str(interaction.user.id))
+            if not user_nid:
+                await interaction.followup.send("❌ You need to register first. Use /register.", ephemeral=True)
+                return
+            
+            nation_id = int(user_nid)
+            nation = await self.nation_service.get_nation(nation_id, "everything_scope")
+            if not nation:
+                await interaction.followup.send("❌ Could not fetch nation.", ephemeral=True)
+                return
+            
+            # Get first city data if not provided
+            if land is None or infra is None:
+                first_city_infra, first_city_land = self._get_first_city_data(nation)
+                if land is None:
+                    land = first_city_land
+                if infra is None:
+                    infra = first_city_infra
+            
+            # Auto-detect continent if not provided
+            if continent is None:
+                nation_continent = getattr(nation, 'continent', 'North America')
+                continent = nation_continent if nation_continent else 'North America'
+            
+            # Get nation's projects
+            projects = self._get_nation_projects(nation)
+            
+            # Validate parameters
+            barracks = max(0, min(barracks, 5))
+            factories = max(0, min(factories, 5))
+            hangars = max(0, min(hangars, 5))
+            drydocks = max(0, min(drydocks, 3))
+            
+            # Calculate optimal build
+            build = self._calculate_optimal_build(
+                infra=infra,
+                land=land,
+                mmr_type=mmr_type,
+                continent=continent,
+                projects=projects,
+                barracks=barracks,
+                factories=factories,
+                hangars=hangars,
+                drydocks=drydocks
+            )
+            
+            # Format as JSON
+            build_json = json.dumps(build, indent=4)
+            
+            # Create embed
+            embed = discord.Embed(
+                title="🏗️ Optimal City Build",
+                description=f"**Nation:** {getattr(nation, 'name', 'Unknown')}\n"
+                           f"**MMR Type:** {mmr_type.title()}\n"
+                           f"**Continent:** {continent}\n"
+                           f"**Infrastructure:** {infra:,}\n"
+                           f"**Land:** {land:,}",
+                color=discord.Color.blue()
+            )
+            
+            embed.add_field(
+                name="Military Improvements",
+                value=f"Barracks: {build['imp_barracks']} | Factories: {build['imp_factory']}\n"
+                      f"Hangars: {build['imp_hangars']} | Drydocks: {build['imp_drydock']}",
+                inline=False
+            )
+            
+            embed.add_field(
+                name="Economic Improvements",
+                value=f"Banks: {build['imp_bank']} | Malls: {build['imp_mall']}\n"
+                      f"Stadiums: {build['imp_stadium']} | Supermarkets: {build['imp_supermarket']}",
+                inline=False
+            )
+            
+            embed.add_field(
+                name="Resource Production",
+                value=f"Uranium Mines: {build['imp_uramine']} | Iron Mines: {build['imp_ironmine']}\n"
+                      f"Bauxite Mines: {build['imp_bauxitemine']} | Lead Mines: {build['imp_leadmine']}",
+                inline=False
+            )
+            
+            await interaction.followup.send(embed=embed)
+            await interaction.followup.send(f"```json\n{build_json}\n```")
+            
+        except Exception as e:
+            logger.error(f"Error in /build command: {e}")
+            await interaction.followup.send("❌ Error generating build.", ephemeral=True)
+
+
+async def setup(bot):
+    cog = BuildCog(bot)
+    await bot.add_cog(cog)

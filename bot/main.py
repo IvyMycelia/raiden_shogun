@@ -51,7 +51,7 @@ async def on_ready():
     except Exception as e:
         bot_logger.error(f"Error initializing cache: {e}")
     
-    # Load cogs
+        # Load cogs
     await load_cogs()
     
     # Start background tasks
@@ -68,12 +68,12 @@ async def on_ready():
         bot.loop.create_task(latency_monitor_task(bot))
     
     bot.loop.create_task(start_latency_monitor())
-    
-    # Sync commands
-    try:
-        synced = await bot.tree.sync()
+        
+        # Sync commands
+        try:
+            synced = await bot.tree.sync()
         bot_logger.info(f"Synced {len(synced)} commands")
-    except Exception as e:
+        except Exception as e:
         bot_logger.error(f"Failed to sync commands: {e}")
     
     bot_logger.info("Bot is ready!")
@@ -163,6 +163,7 @@ async def load_cogs():
         'cogs.nation.purge',
         'cogs.nation.projects',
         'cogs.nation.military',
+        'cogs.nation.build',
         'cogs.audit.main',
         'cogs.audit.activity',
         'cogs.audit.warchest',
